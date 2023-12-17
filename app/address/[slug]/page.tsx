@@ -1,24 +1,7 @@
-import { FC } from "react";
+import { FC, Suspense } from 'react';
 
-const getData = async (address: string) => {
-  const result = await fetch(
-    `https://svc.blockdaemon.com/universal/v1/ethereum/goerli/account/${address}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.BLOCKDAEMON_API_KEY}`,
-      },
-      cache: "no-store",
-    }
-  );
-
-  if (!result.ok) {
-    throw new Error(
-      `An error occured fetching the account info for ${address}: ${result.statusText}`
-    );
-  }
-
-  return result.json();
-};
+import Details from './details';
+import Transactions from './transactions';
 
 type Props = {
   params: {
@@ -27,9 +10,17 @@ type Props = {
 };
 
 const Address: FC<Props> = async ({ params: { slug } }) => {
-  const result = await getData(slug);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <Suspense fallback={<span>Loading...</span>}>
+        <Details address={slug} />
+      </Suspense>
 
-  return <pre>{JSON.stringify(result, null, 2)}</pre>;
+      <Suspense fallback={<span>Loading...</span>}>
+        <Transactions address={slug} />
+      </Suspense>
+    </div>
+  );
 };
 
 export default Address;

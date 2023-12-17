@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
+import { startMoralisClient } from './_api/moralisClient';
+
+const inter = Inter({ subsets: ['latin'] });
+
+startMoralisClient();
 
 export const metadata: Metadata = {
-  title: "Ethereum explorer",
+  title: 'Ethereum explorer',
 };
 
 export default function RootLayout({
