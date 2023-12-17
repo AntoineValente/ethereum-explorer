@@ -11,7 +11,7 @@ type Props = {
 
 const Address: FC<Props> = async ({ params: { slug } }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className="bg-red-500">
       <Suspense fallback={<span>Loading...</span>}>
         <Details address={slug} />
       </Suspense>
