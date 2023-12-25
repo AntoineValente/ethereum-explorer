@@ -1,15 +1,11 @@
 import { FC } from 'react';
 
-import Moralis from 'moralis';
-import { EvmChain } from 'moralis/common-evm-utils';
-
 const getData = async (address: string) => {
-  const response = await Moralis.EvmApi.transaction.getWalletTransactions({
-    chain: EvmChain.ETHEREUM,
-    address,
-  });
-
-  return response.toJSON();
+  // const response = await Moralis.EvmApi.transaction.getWalletTransactions({
+  //   chain: EvmChain.ETHEREUM,
+  //   address,
+  // });
+  // return response.toJSON();
 };
 
 type Props = {
@@ -17,13 +13,13 @@ type Props = {
 };
 
 const Transactions: FC<Props> = async ({ address }) => {
-  const transactions = await getData(address);
+  // const transactions = await getData(address);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Transactions</h1>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {/* <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {transactions.result.map((transaction) => (
           <div key={transaction.hash} style={{ display: 'flex', gap: '5px' }}>
             <span>
@@ -41,7 +37,7 @@ const Transactions: FC<Props> = async ({ address }) => {
             </span>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* <pre>{JSON.stringify(transactions, null, 2)}</pre> */}
     </div>

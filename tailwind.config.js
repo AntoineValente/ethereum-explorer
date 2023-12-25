@@ -13,7 +13,10 @@ module.exports = {
         muted: '#27272A',
         subtle: '#18181B',
       },
-      text: {
+      border: {
+        base: '#27272A',
+      },
+      typo: {
         primary: {
           strong: '#93C5FD',
         },
@@ -67,7 +70,7 @@ module.exports = {
         '0.75rem',
         {
           fontStyle: 'normal',
-          fontWeight: '1rem',
+          lineHeight: '1rem',
         },
       ],
     },

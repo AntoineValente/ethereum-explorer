@@ -1,12 +1,10 @@
+import { clsx } from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { startMoralisClient } from './_api/moralisClient';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
-
-startMoralisClient();
 
 export const metadata: Metadata = {
   title: 'Ethereum explorer',
@@ -19,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx('bg-background-base', inter.className)}>
+        {children}
+      </body>
     </html>
   );
 }
