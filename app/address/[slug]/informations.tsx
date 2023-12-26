@@ -45,18 +45,18 @@ const Informations: FC<Props> = async ({ address }) => {
 
       <Card.Section>
         <>
-          <Card.SectionTitle>Last transaction</Card.SectionTitle>
+          <Card.SectionTitle>Number of transactions</Card.SectionTitle>
           <PMedium className="font-normal underline">
-            {createMiddleEllipsis(result.lastTransactionHash, 22, 22)}
+            {result.transactionsCount}
           </PMedium>
         </>
       </Card.Section>
 
       <Card.Section>
         <>
-          <Card.SectionTitle>Number of transactions</Card.SectionTitle>
+          <Card.SectionTitle>Last transaction</Card.SectionTitle>
           <PMedium className="font-normal underline">
-            {result.transactionsCount}
+            {createMiddleEllipsis(result.lastTransactionHash, 22, 22)}
           </PMedium>
         </>
       </Card.Section>

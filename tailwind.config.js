@@ -8,6 +8,12 @@ module.exports = {
       primary: {
         sutle: '#172554',
       },
+      success: {
+        subtle: '#052E16',
+      },
+      danger: {
+        subtle: '#450A0A',
+      },
       background: {
         base: '#09090B',
         muted: '#27272A',
@@ -19,6 +25,12 @@ module.exports = {
       typo: {
         primary: {
           strong: '#93C5FD',
+        },
+        success: {
+          strong: '#86EFAC',
+        },
+        danger: {
+          strong: '#FCA5A5',
         },
         base: '#FFFFFF',
         muted: '#A1A1AA',

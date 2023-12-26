@@ -38,6 +38,32 @@ enum TransactionStatus {
   Success,
 }
 
+const transactions = z.object({
+  type: z.nativeEnum(TransactionType),
+  status: z.nativeEnum(TransactionStatus),
+  block_number: z.number(),
+  block_timestamp: z.date(),
+  transaction_hash: z.string(),
+  transaction_index: z.number(),
+  from_address: z.string(),
+  to_address: z.string(),
+  value: z.string(),
+  input: z.string(),
+  nonce: z.number(),
+  contract_address: z.string(),
+  gas: z.number(),
+  gas_price: z.number(),
+  gas_used: z.number(),
+  effective_gas_price: z.number(),
+  cumulative_gas_used: z.number(),
+  max_fee_per_gas: z.number(),
+  max_priority_fee_per_gas: z.number(),
+  tx_fee: z.number(),
+  saving_fee: z.number(),
+  burnt_fee: z.number(),
+});
+export type Transaction = z.infer<typeof transactions>;
+
 const endpoints = [
   {
     method: 'GET',
@@ -127,32 +153,7 @@ const endpoints = [
     path: '/v1/account/txs',
     parameters: paginationParameters,
     response: paginationResponse.extend({
-      data: z.array(
-        z.object({
-          type: z.nativeEnum(TransactionType),
-          status: z.nativeEnum(TransactionStatus),
-          block_number: z.number(),
-          block_timestamp: z.date(),
-          transaction_hash: z.string(),
-          transaction_index: z.number(),
-          from_address: z.string(),
-          to_address: z.string(),
-          value: z.string(),
-          input: z.string(),
-          nonce: z.number(),
-          contract_address: z.string(),
-          gas: z.number(),
-          gas_price: z.number(),
-          gas_used: z.number(),
-          effective_gas_price: z.number(),
-          cumulative_gas_used: z.number(),
-          max_fee_per_gas: z.number(),
-          max_priority_fee_per_gas: z.number(),
-          tx_fee: z.number(),
-          saving_fee: z.number(),
-          burnt_fee: z.number(),
-        }),
-      ),
+      data: z.array(transactions),
     }),
   },
 ] as const;
