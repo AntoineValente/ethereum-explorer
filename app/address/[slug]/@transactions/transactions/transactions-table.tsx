@@ -1,23 +1,44 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 
-import { chainbaseClient } from '@/app/_api/chainbase-client';
+import {
+  ChainId,
+  PaginationParameters,
+  chainbaseClient,
+} from '@/app/_api/chainbase-client';
 import Badge from '@/app/_components/badge';
 import { Table } from '@/app/_components/table';
 import { PLarge } from '@/app/_components/typo';
 import { EHTEREUM_DECIMALS } from '@/app/_consts';
+import { usePagination } from '@/app/_hooks/usePagination';
 import { getAmountWithDecimals } from '@/app/_utils/amount';
 import { createMiddleEllipsis } from '@/app/_utils/text';
 
 type Props = {
-  transactions: Awaited<
-    ReturnType<typeof chainbaseClient.getTransactions>
-  >['data'];
+  transactions: Awaited<ReturnType<typeof chainbaseClient.getTransactions>>;
+  limit: number;
   address: string;
 };
 
-const TransactionsTable: FC<Props> = ({ transactions, address }) => {
+const TransactionsTable: FC<Props> = ({ transactions, address, limit }) => {
+  const fetcher = useCallback(
+    (params: Pick<PaginationParameters, 'page' | 'limit'>) =>
+      chainbaseClient.getTransactions({
+        address,
+        chain_id: ChainId.EHTEREUM,
+        ...params,
+      }),
+    [address],
+  );
+
+  const { onPrevious, onNext, page, count, data } = usePagination({
+    fetcher,
+    limit,
+  });
+
+  const transactionsList = data ?? transactions.data;
+
   return (
     <div className="flex flex-col space-y-7">
       <PLarge>Filters</PLarge>
@@ -36,18 +57,18 @@ const TransactionsTable: FC<Props> = ({ transactions, address }) => {
         </Table.Head>
 
         <Table.Body>
-          {transactions.map((transaction) => (
+          {transactionsList.map((transaction) => (
             <Table.Row key={transaction.transaction_hash}>
               <Table.Cell>
-                {createMiddleEllipsis(transaction.transaction_hash, 7, 7)}
+                {createMiddleEllipsis(transaction.transaction_hash, 8, 8)}
               </Table.Cell>
               <Table.Cell>{transaction.block_number}</Table.Cell>
               <Table.Cell>{String(transaction.block_timestamp)}</Table.Cell>
               <Table.Cell>
-                {createMiddleEllipsis(transaction.from_address, 7, 7)}
+                {createMiddleEllipsis(transaction.from_address, 8, 8)}
               </Table.Cell>
               <Table.Cell>
-                {createMiddleEllipsis(transaction.to_address, 7, 7)}
+                {createMiddleEllipsis(transaction.to_address, 8, 8)}
               </Table.Cell>
               <Table.Cell align="right">
                 {getAmountWithDecimals(transaction.value, EHTEREUM_DECIMALS)}{' '}
@@ -67,6 +88,15 @@ const TransactionsTable: FC<Props> = ({ transactions, address }) => {
             </Table.Row>
           ))}
         </Table.Body>
+
+        <Table.Pagination
+          onNext={onNext}
+          onPrevious={onPrevious}
+          numberOfColumns={7}
+          limit={limit}
+          page={page}
+          count={transactions.count}
+        ></Table.Pagination>
       </Table.Root>
     </div>
   );

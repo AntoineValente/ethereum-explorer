@@ -15,6 +15,7 @@ const paginationResponse = response.extend({
   next_page: z.number().optional(),
   count: z.number().optional(),
 });
+export type PaginationResponse = z.infer<typeof paginationResponse>;
 
 const parameters = z.object({
   chain_id: z.number(),
@@ -25,6 +26,7 @@ const paginationParameters = parameters.extend({
   limit: z.number().optional(),
   page: z.number().optional(),
 });
+export type PaginationParameters = z.infer<typeof paginationParameters>;
 
 enum TransactionType {
   LegacyTx,
