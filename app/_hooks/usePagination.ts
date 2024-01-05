@@ -3,7 +3,7 @@ import { useCallback, useEffect, useReducer, useState } from 'react';
 import {
   PaginationParameters,
   PaginationResponse,
-} from '../_api/chainbase-client';
+} from '../api/chainbase-client';
 
 type Args<T> = {
   fetcher: (
@@ -17,17 +17,18 @@ type PaginationContext<T> = {
   limit: number;
   count?: number;
   data?: T[];
+  isLoading?: boolean
 };
 
 type PaginationState<T> =
   | { name: 'default'; context: PaginationContext<T> }
   | { name: 'fetching'; context: PaginationContext<T> }
   | {
-      name: 'error';
-      context: PaginationContext<T> & {
-        reason: string;
-      };
+    name: 'error';
+    context: PaginationContext<T> & {
+      reason: string;
     };
+  };
 
 type PaginationEvent<T> =
   | { type: 'NEXT' }
@@ -111,15 +112,15 @@ export const usePagination = <T>({
   onPrevious: () => void;
 } => {
   const [state, send] = useReducer(reducer<T>, {
-    name: 'default',
+    name: 'fetching',
     context: {
-      page: 0,
+      page: 1,
       limit,
     },
   });
 
-  const onPrevious = useCallback(() => send({ type: 'NEXT' }), []);
-  const onNext = useCallback(() => send({ type: 'PREVIOUS' }), []);
+  const onPrevious = useCallback(() => send({ type: 'PREVIOUS' }), []);
+  const onNext = useCallback(() => send({ type: 'NEXT' }), []);
 
   useEffect(() => {
     if (state.name === 'fetching') {
@@ -135,5 +136,6 @@ export const usePagination = <T>({
     onPrevious,
     onNext,
     ...state.context,
+    isLoading: state.name === "fetching"
   };
 };

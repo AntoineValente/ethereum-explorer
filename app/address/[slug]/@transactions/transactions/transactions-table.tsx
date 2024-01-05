@@ -6,7 +6,7 @@ import {
   ChainId,
   PaginationParameters,
   chainbaseClient,
-} from '@/app/_api/chainbase-client';
+} from '@/app/api/chainbase-client';
 import Badge from '@/app/_components/badge';
 import { Table } from '@/app/_components/table';
 import { PLarge } from '@/app/_components/typo';
@@ -15,29 +15,29 @@ import { usePagination } from '@/app/_hooks/usePagination';
 import { getAmountWithDecimals } from '@/app/_utils/amount';
 import { createMiddleEllipsis } from '@/app/_utils/text';
 
+type TransactionResponse = Awaited<ReturnType<typeof chainbaseClient.getTransactions>>
+
 type Props = {
-  transactions: Awaited<ReturnType<typeof chainbaseClient.getTransactions>>;
+  transactions: TransactionResponse;
   limit: number;
   address: string;
 };
 
 const TransactionsTable: FC<Props> = ({ transactions, address, limit }) => {
   const fetcher = useCallback(
-    (params: Pick<PaginationParameters, 'page' | 'limit'>) =>
-      chainbaseClient.getTransactions({
-        address,
-        chain_id: ChainId.EHTEREUM,
-        ...params,
-      }),
+    (params: Pick<PaginationParameters, 'page' | 'limit'>): Promise<TransactionResponse> =>
+      fetch(`/api/transactions?address=${address}&page=${params.page}&limit=${params.limit}`).then(r => r.json()),
     [address],
   );
 
-  const { onPrevious, onNext, page, count, data } = usePagination({
+  const { onPrevious, onNext, page, count, data, isLoading } = usePagination({
     fetcher,
     limit,
   });
 
   const transactionsList = data ?? transactions.data;
+
+  console.log({ page, limit })
 
   return (
     <div className="flex flex-col space-y-7">
@@ -96,6 +96,7 @@ const TransactionsTable: FC<Props> = ({ transactions, address, limit }) => {
           limit={limit}
           page={page}
           count={transactions.count}
+          isLoading={isLoading}
         ></Table.Pagination>
       </Table.Root>
     </div>

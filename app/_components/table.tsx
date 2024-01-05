@@ -56,6 +56,7 @@ type PaginationProps = ComponentProps<'tfoot'> & {
   count?: number;
   onNext: VoidFunction;
   onPrevious: VoidFunction;
+  isLoading?: boolean
 };
 
 const Pagination: FC<PaginationProps> = ({
@@ -65,13 +66,14 @@ const Pagination: FC<PaginationProps> = ({
   count,
   onNext,
   onPrevious,
+  isLoading
 }) => (
   <tfoot>
     <Row>
       <Cell>
         <PSmall>
           Showing <b>{page === 1 ? 1 : (page - 1) * limit}</b> to{' '}
-          <b>{limit * page}</b> of <b>{count}</b> results
+          <b>{page * limit}</b> of <b>{count}</b> results
         </PSmall>
       </Cell>
       {new Array(numberOfColumns - 2).fill('').map((_, index) => (
@@ -79,10 +81,10 @@ const Pagination: FC<PaginationProps> = ({
       ))}
       <Cell align="right">
         <div className="flex flex-row space-x-3">
-          <Button onClick={onPrevious} status="ghost">
+          <Button onClick={onPrevious} status="ghost" disabled={isLoading || page === 1}>
             Previous
           </Button>
-          <Button onClick={onNext} status="ghost">
+          <Button onClick={onNext} status="ghost" disabled={isLoading}>
             Next
           </Button>
         </div>

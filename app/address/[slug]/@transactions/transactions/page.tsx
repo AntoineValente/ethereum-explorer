@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ChainId, chainbaseClient } from '@/app/_api/chainbase-client';
+import { ChainId, chainbaseClient } from '@/app/api/chainbase-client';
 import { SlugProps } from '@/app/_consts/props';
 
 import TransactionsTable from './transactions-table';
