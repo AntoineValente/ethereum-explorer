@@ -3,7 +3,6 @@
 import { FC, useCallback } from 'react';
 
 import {
-  ChainId,
   PaginationParameters,
   chainbaseClient,
 } from '@/app/api/chainbase-client';
@@ -36,8 +35,6 @@ const TransactionsTable: FC<Props> = ({ transactions, address, limit }) => {
   });
 
   const transactionsList = data ?? transactions.data;
-
-  console.log({ page, limit })
 
   return (
     <div className="flex flex-col space-y-7">
@@ -97,7 +94,7 @@ const TransactionsTable: FC<Props> = ({ transactions, address, limit }) => {
           page={page}
           count={transactions.count}
           isLoading={isLoading}
-        ></Table.Pagination>
+        />
       </Table.Root>
     </div>
   );

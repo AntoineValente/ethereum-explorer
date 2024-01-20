@@ -112,7 +112,7 @@ export const usePagination = <T>({
   onPrevious: () => void;
 } => {
   const [state, send] = useReducer(reducer<T>, {
-    name: 'fetching',
+    name: 'default',
     context: {
       page: 1,
       limit,
