@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { ChainId, chainbaseClient } from '@/app/api/chainbase-client';
 import Badge from '@/app/_components/badge';
 import { Card } from '@/app/_components/card';
 import { H1, PLarge, PMedium } from '@/app/_components/typo';
 import { EHTEREUM_DECIMALS } from '@/app/_consts';
 import { createMiddleEllipsis } from '@/app/_utils/text';
+import { ChainId, chainbaseClient } from '@/app/api/chainbase-client';
 
 const getData = async (address: string) => {
   const transactionsResponse = await chainbaseClient.getTransactions({

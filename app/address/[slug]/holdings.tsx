@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-import { ChainId, chainbaseClient } from '@/app/api/chainbase-client';
 import { Card } from '@/app/_components/card';
 import { H1, PLarge, PMedium } from '@/app/_components/typo';
 import { EHTEREUM_DECIMALS } from '@/app/_consts';
 import { getAmountWithDecimals } from '@/app/_utils/amount';
+import { ChainId, chainbaseClient } from '@/app/api/chainbase-client';
 
 const getData = async (address: string) => {
   const nativeBalanceResponse = await chainbaseClient.getNativeBalance({
@@ -23,7 +23,6 @@ const getData = async (address: string) => {
     address,
     limit: 1,
   });
-
 
   return {
     nativeBalance: nativeBalanceResponse.data,

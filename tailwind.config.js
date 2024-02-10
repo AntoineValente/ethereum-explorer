@@ -36,6 +36,7 @@ module.exports = {
         muted: '#A1A1AA',
         subtle: '#71717A',
       },
+      transparent: 'transparent',
     },
     fontFamily: {
       sans: ['"Inter"', ...defaultTheme.fontFamily.sans],

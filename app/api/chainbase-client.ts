@@ -40,6 +40,14 @@ enum TransactionStatus {
   Success,
 }
 
+const transactionsParameters = paginationParameters.extend({
+  from_block: z.string().optional(),
+  to_block: z.string().optional(),
+  from_timestamp: z.date().optional(),
+  to_timestamp: z.date().optional(),
+});
+export type TransactionsParameters = z.infer<typeof transactionsParameters>;
+
 const transactions = z.object({
   type: z.nativeEnum(TransactionType),
   status: z.nativeEnum(TransactionStatus),
@@ -153,7 +161,7 @@ const endpoints = [
     method: 'GET',
     alias: 'getTransactions',
     path: '/v1/account/txs',
-    parameters: paginationParameters,
+    parameters: transactionsParameters,
     response: paginationResponse.extend({
       data: z.array(transactions),
     }),

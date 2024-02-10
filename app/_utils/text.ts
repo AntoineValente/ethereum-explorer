@@ -12,3 +12,12 @@ export const createMiddleEllipsis = (
     text.length,
   )}`;
 };
+
+export const tryParseInt = (value: string): number | string => {
+  const parsed = parseInt(value, 10);
+  if (isNaN(parsed)) {
+    return value;
+  }
+
+  return parsed;
+};
