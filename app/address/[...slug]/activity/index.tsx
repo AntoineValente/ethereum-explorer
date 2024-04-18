@@ -59,7 +59,7 @@ export const Activity: FC<Props> = ({ address, activitySlug }) => {
 			</TabsList>
 
 			{Object.entries(activitiesDict).map(([slug, { Component }]) => (
-				<TabsContent key={slug} value={slug}>
+				<TabsContent key={slug} value={slug} className="mt-2 py-1">
 					<Component address={address} />
 				</TabsContent>
 			))}
