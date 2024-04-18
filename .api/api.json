@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "chainbase",
+      "source": "@chainbase/v1.0#320mt2a12lg6g3z4q",
+      "integrity": "sha512-NZei+J3df4QcX6d+TPqZXS4wrc4xx2vsiwcJ9YtwSlKKpNhiWM8TbzpkZWCa8XjG0lHbTuHKbffpNRE2ksb5PQ==",
+      "installerVersion": "6.1.1"
+    }
+  ]
+}

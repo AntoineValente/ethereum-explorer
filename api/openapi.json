@@ -1,0 +1,5149 @@
+{
+	"openapi": "3.0.2",
+	"info": {
+		"title": "🏦 Balance API",
+		"version": "v1.0.0"
+	},
+	"servers": [
+		{
+			"url": "https://api.chainbase.online",
+			"description": "production server"
+		}
+	],
+	"paths": {
+		"/v1/block/number/latest": {
+			"get": {
+				"tags": ["Block"],
+				"summary": "Get latest block number",
+				"description": "Get the latest block height of blockchain network.",
+				"operationId": "GetBlockNumberLatest",
+				"parameters": [
+					{
+						"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    ",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    "
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetLastBlockNumber",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "GetLastBlockNumberData",
+											"required": ["number", "hash"],
+											"type": "object",
+											"properties": {
+												"number": {
+													"title": "Number",
+													"type": "integer"
+												},
+												"hash": {
+													"title": "Hash",
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/block/detail": {
+			"get": {
+				"tags": ["Block"],
+				"summary": "Get block by number",
+				"description": "Get the detail of a block by the given block humber.",
+				"operationId": "GetBlockDetail",
+				"parameters": [
+					{
+						"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    ",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    "
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "Block number",
+						"required": true,
+						"schema": {
+							"title": "Number",
+							"type": "string",
+							"description": "Block number"
+						},
+						"name": "number",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetBlockDetail",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "BlockDetail",
+											"required": [
+												"number",
+												"hash",
+												"parent_hash",
+												"timestamp",
+												"difficulty",
+												"extra_data",
+												"gas_limit",
+												"gas_used",
+												"base_fee_per_gas",
+												"miner",
+												"mix_hash",
+												"nonce",
+												"receipts_root",
+												"sha3_uncles",
+												"size",
+												"state_root",
+												"transactions_root",
+												"transactions_count",
+												"uncles_count"
+											],
+											"type": "object",
+											"properties": {
+												"number": {
+													"title": "Number",
+													"type": "integer"
+												},
+												"hash": {
+													"title": "Hash",
+													"type": "string"
+												},
+												"parent_hash": {
+													"title": "Parent Hash",
+													"type": "string"
+												},
+												"timestamp": {
+													"title": "Timestamp",
+													"type": "string"
+												},
+												"difficulty": {
+													"title": "Difficulty",
+													"type": "string"
+												},
+												"extra_data": {
+													"title": "Extra Data",
+													"type": "string"
+												},
+												"gas_limit": {
+													"title": "Gas Limit",
+													"type": "integer"
+												},
+												"gas_used": {
+													"title": "Gas Used",
+													"type": "integer"
+												},
+												"base_fee_per_gas": {
+													"title": "Base Fee Per Gas",
+													"type": "integer"
+												},
+												"miner": {
+													"title": "Miner",
+													"type": "string"
+												},
+												"mix_hash": {
+													"title": "Mix Hash",
+													"type": "string"
+												},
+												"nonce": {
+													"title": "Nonce",
+													"type": "string"
+												},
+												"receipts_root": {
+													"title": "Receipts Root",
+													"type": "string"
+												},
+												"sha3_uncles": {
+													"title": "Sha3 Uncles",
+													"type": "string"
+												},
+												"size": {
+													"title": "Size",
+													"type": "integer"
+												},
+												"state_root": {
+													"title": "State Root",
+													"type": "string"
+												},
+												"transactions_root": {
+													"title": "Transactions Root",
+													"type": "string"
+												},
+												"transactions_count": {
+													"title": "Transactions Count",
+													"type": "integer"
+												},
+												"uncles_count": {
+													"title": "Uncles Count",
+													"type": "integer"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/tx/detail": {
+			"get": {
+				"tags": ["Transaction"],
+				"summary": "Get transaction",
+				"description": "Get the detail of a transaction given the transaction hash.\n\nProvide the param \"hash\" or (\"block_number\" and \"tx_index\"). If both params are provided,\n\"hash\" will be used.",
+				"operationId": "GetTxDetail",
+				"parameters": [
+					{
+						"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    ",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    "
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "The transaction hash",
+						"required": false,
+						"schema": {
+							"title": "Hash",
+							"type": "string",
+							"description": "The transaction hash"
+						},
+						"example": "0xea1093d492a1dcb1bef708f771a99a96ff05dcab81ca76c31940300177fcf49f",
+						"name": "hash",
+						"in": "query"
+					},
+					{
+						"description": "Block number of the transaction",
+						"required": false,
+						"schema": {
+							"title": "Block Number",
+							"type": "integer",
+							"description": "Block number of the transaction"
+						},
+						"name": "block_number",
+						"in": "query"
+					},
+					{
+						"description": "Index of the transaction",
+						"required": false,
+						"schema": {
+							"title": "Tx Index",
+							"type": "integer",
+							"description": "Index of the transaction"
+						},
+						"name": "tx_index",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetTxDetail",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "TxDetail",
+											"required": [
+												"type",
+												"status",
+												"block_number",
+												"block_timestamp",
+												"transaction_hash",
+												"transaction_index",
+												"from_address",
+												"to_address",
+												"value",
+												"input",
+												"nonce",
+												"contract_address",
+												"gas",
+												"gas_price",
+												"gas_used",
+												"effective_gas_price",
+												"cumulative_gas_used",
+												"max_fee_per_gas",
+												"max_priority_fee_per_gas",
+												"tx_fee",
+												"saving_fee",
+												"burnt_fee"
+											],
+											"type": "object",
+											"properties": {
+												"type": {
+													"title": "Type",
+													"type": "integer"
+												},
+												"status": {
+													"title": "Status",
+													"type": "integer"
+												},
+												"block_number": {
+													"title": "Block Number",
+													"type": "integer"
+												},
+												"block_timestamp": {
+													"title": "Block Timestamp",
+													"type": "string"
+												},
+												"transaction_hash": {
+													"title": "Transaction Hash",
+													"type": "string"
+												},
+												"transaction_index": {
+													"title": "Transaction Index",
+													"type": "integer"
+												},
+												"from_address": {
+													"title": "From Address",
+													"type": "string"
+												},
+												"to_address": {
+													"title": "To Address",
+													"type": "string"
+												},
+												"value": {
+													"title": "Value",
+													"type": "string"
+												},
+												"input": {
+													"title": "Input",
+													"type": "string"
+												},
+												"nonce": {
+													"title": "Nonce",
+													"type": "string"
+												},
+												"contract_address": {
+													"title": "Contract Address",
+													"type": "string"
+												},
+												"gas": {
+													"title": "Gas",
+													"type": "integer"
+												},
+												"gas_price": {
+													"title": "Gas Price",
+													"type": "integer"
+												},
+												"gas_used": {
+													"title": "Gas Used",
+													"type": "integer"
+												},
+												"effective_gas_price": {
+													"title": "Effective Gas Price",
+													"type": "integer"
+												},
+												"cumulative_gas_used": {
+													"title": "Cumulative Gas Used",
+													"type": "integer"
+												},
+												"max_fee_per_gas": {
+													"title": "Max Fee Per Gas",
+													"type": "integer"
+												},
+												"max_priority_fee_per_gas": {
+													"title": "Max Priority Fee Per Gas",
+													"type": "integer"
+												},
+												"tx_fee": {
+													"title": "Tx Fee",
+													"type": "integer"
+												},
+												"saving_fee": {
+													"title": "Saving Fee",
+													"type": "integer"
+												},
+												"burnt_fee": {
+													"title": "Burnt Fee",
+													"type": "integer"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/account/txs": {
+			"get": {
+				"tags": ["Transaction"],
+				"summary": "Get transactions by account",
+				"description": "Returns the transactions from the address.",
+				"operationId": "GetAccountTxs",
+				"parameters": [
+					{
+						"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    ",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    "
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "A hex string referencing a wallet address",
+						"required": true,
+						"schema": {
+							"title": "Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a wallet address"
+						},
+						"example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+						"name": "address",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive from block number (hex string or int)",
+						"required": false,
+						"schema": {
+							"title": "From Block",
+							"type": "string",
+							"description": "Inclusive from block number (hex string or int)"
+						},
+						"name": "from_block",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive to block number (hex string, int, or 'latest')",
+						"required": false,
+						"schema": {
+							"title": "To Block",
+							"type": "string",
+							"description": "Inclusive to block number (hex string, int, or 'latest')"
+						},
+						"example": "latest",
+						"name": "to_block",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive from block number (hex string or int)",
+						"required": false,
+						"schema": {
+							"title": "From Timestamp",
+							"type": "integer",
+							"description": "Inclusive from block number (hex string or int)"
+						},
+						"name": "from_timestamp",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive end timestamp",
+						"required": false,
+						"schema": {
+							"title": "End Timestamp",
+							"type": "integer",
+							"description": "Inclusive end timestamp"
+						},
+						"name": "end_timestamp",
+						"in": "query"
+					},
+					{
+						"description": "The page offset",
+						"required": false,
+						"schema": {
+							"title": "Page",
+							"minimum": 1,
+							"type": "integer",
+							"description": "The page offset",
+							"default": 1
+						},
+						"name": "page",
+						"in": "query"
+					},
+					{
+						"description": "The desired page size limit. Less or equal than 100",
+						"required": false,
+						"schema": {
+							"title": "Limit",
+							"maximum": 100,
+							"minimum": 1,
+							"type": "integer",
+							"description": "The desired page size limit. Less or equal than 100",
+							"default": 20
+						},
+						"name": "limit",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetAccountTxs",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {
+												"title": "TxDetail",
+												"required": [
+													"type",
+													"status",
+													"block_number",
+													"block_timestamp",
+													"transaction_hash",
+													"transaction_index",
+													"from_address",
+													"to_address",
+													"value",
+													"input",
+													"nonce",
+													"contract_address",
+													"gas",
+													"gas_price",
+													"gas_used",
+													"effective_gas_price",
+													"cumulative_gas_used",
+													"max_fee_per_gas",
+													"max_priority_fee_per_gas",
+													"tx_fee",
+													"saving_fee",
+													"burnt_fee"
+												],
+												"type": "object",
+												"properties": {
+													"type": {
+														"title": "Type",
+														"type": "integer"
+													},
+													"status": {
+														"title": "Status",
+														"type": "integer"
+													},
+													"block_number": {
+														"title": "Block Number",
+														"type": "integer"
+													},
+													"block_timestamp": {
+														"title": "Block Timestamp",
+														"type": "string"
+													},
+													"transaction_hash": {
+														"title": "Transaction Hash",
+														"type": "string"
+													},
+													"transaction_index": {
+														"title": "Transaction Index",
+														"type": "integer"
+													},
+													"from_address": {
+														"title": "From Address",
+														"type": "string"
+													},
+													"to_address": {
+														"title": "To Address",
+														"type": "string"
+													},
+													"value": {
+														"title": "Value",
+														"type": "string"
+													},
+													"input": {
+														"title": "Input",
+														"type": "string"
+													},
+													"nonce": {
+														"title": "Nonce",
+														"type": "string"
+													},
+													"contract_address": {
+														"title": "Contract Address",
+														"type": "string"
+													},
+													"gas": {
+														"title": "Gas",
+														"type": "integer"
+													},
+													"gas_price": {
+														"title": "Gas Price",
+														"type": "integer"
+													},
+													"gas_used": {
+														"title": "Gas Used",
+														"type": "integer"
+													},
+													"effective_gas_price": {
+														"title": "Effective Gas Price",
+														"type": "integer"
+													},
+													"cumulative_gas_used": {
+														"title": "Cumulative Gas Used",
+														"type": "integer"
+													},
+													"max_fee_per_gas": {
+														"title": "Max Fee Per Gas",
+														"type": "integer"
+													},
+													"max_priority_fee_per_gas": {
+														"title": "Max Priority Fee Per Gas",
+														"type": "integer"
+													},
+													"tx_fee": {
+														"title": "Tx Fee",
+														"type": "integer"
+													},
+													"saving_fee": {
+														"title": "Saving Fee",
+														"type": "integer"
+													},
+													"burnt_fee": {
+														"title": "Burnt Fee",
+														"type": "integer"
+													}
+												}
+											}
+										},
+										"next_page": {
+											"title": "Next Page",
+											"type": "integer"
+										},
+										"count": {
+											"title": "Count",
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/contract/events": {
+			"get": {
+				"tags": ["Events"],
+				"summary": "Get events by contract",
+				"description": "Gets the list of events for the specified contract.",
+				"operationId": "GetContractEvents",
+				"parameters": [
+					{
+						"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    ",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, \n    see [list of details](https://docs.chainbase.com/reference/supported-chains)\n    "
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "A hex string referencing a contract address",
+						"required": true,
+						"schema": {
+							"title": "Contract Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a contract address"
+						},
+						"name": "contract_address",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive from block number (hex string or int)",
+						"required": false,
+						"schema": {
+							"title": "From Block",
+							"type": "string",
+							"description": "Inclusive from block number (hex string or int)"
+						},
+						"name": "from_block",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive to block number (hex string, int, or 'latest')",
+						"required": false,
+						"schema": {
+							"title": "To Block",
+							"type": "string",
+							"description": "Inclusive to block number (hex string, int, or 'latest')"
+						},
+						"example": "latest",
+						"name": "to_block",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive start timestamp",
+						"required": false,
+						"schema": {
+							"title": "From Timestamp",
+							"type": "integer",
+							"description": "Inclusive start timestamp"
+						},
+						"name": "from_timestamp",
+						"in": "query"
+					},
+					{
+						"description": "Inclusive end timestamp",
+						"required": false,
+						"schema": {
+							"title": "End Timestamp",
+							"type": "integer",
+							"description": "Inclusive end timestamp"
+						},
+						"name": "end_timestamp",
+						"in": "query"
+					},
+					{
+						"description": "The page offset",
+						"required": false,
+						"schema": {
+							"title": "Page",
+							"minimum": 1,
+							"type": "integer",
+							"description": "The page offset",
+							"default": 1
+						},
+						"name": "page",
+						"in": "query"
+					},
+					{
+						"description": "The desired page size limit. Less or equal than 100",
+						"required": false,
+						"schema": {
+							"title": "Limit",
+							"maximum": 100,
+							"minimum": 1,
+							"type": "integer",
+							"description": "The desired page size limit. Less or equal than 100",
+							"default": 20
+						},
+						"name": "limit",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseContractEvents",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {
+												"title": "ContractEventsData",
+												"required": [
+													"block_number",
+													"function",
+													"method_id",
+													"transaction_hash",
+													"transaction_index"
+												],
+												"type": "object",
+												"properties": {
+													"block_number": {
+														"title": "Block Number",
+														"type": "integer"
+													},
+													"function": {
+														"title": "Function",
+														"type": "string"
+													},
+													"method_id": {
+														"title": "Method Id",
+														"type": "string"
+													},
+													"transaction_hash": {
+														"title": "Transaction Hash",
+														"type": "string"
+													},
+													"transaction_index": {
+														"title": "Transaction Index",
+														"type": "integer"
+													}
+												}
+											}
+										},
+										"next_page": {
+											"title": "Next Page",
+											"type": "integer"
+										},
+										"count": {
+											"title": "Count",
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/contract/call": {
+			"post": {
+				"tags": ["Contract"],
+				"summary": "Contract call",
+				"description": "Calls a specific function for the specified contract.",
+				"operationId": "ContractCall",
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"title": "ContractCallBody",
+								"required": [
+									"chain_id",
+									"contract_address",
+									"function_name",
+									"abi",
+									"params",
+									"to_block"
+								],
+								"type": "object",
+								"properties": {
+									"chain_id": {
+										"title": "Chain Id",
+										"type": "integer"
+									},
+									"contract_address": {
+										"title": "Contract Address",
+										"type": "string"
+									},
+									"function_name": {
+										"title": "Function Name",
+										"type": "string"
+									},
+									"abi": {
+										"title": "Abi",
+										"type": "string"
+									},
+									"params": {
+										"title": "Params",
+										"type": "array",
+										"items": {}
+									},
+									"to_block": {
+										"title": "To Block",
+										"type": "string"
+									}
+								},
+								"example": {
+									"chain_id": 1,
+									"contract_address": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+									"function_name": "name",
+									"abi": "[\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"maxBatchSize_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"collectionSize_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"amountForAuctionAndDev_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"amountForDevs_\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"constructor\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"approved\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"Approval\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": false,\n        \"internalType\": \"bool\",\n        \"name\": \"approved\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"name\": \"ApprovalForAll\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"previousOwner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"newOwner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"OwnershipTransferred\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"Transfer\",\n    \"type\": \"event\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_DROP_INTERVAL\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_DROP_PER_STEP\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_END_PRICE\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_PRICE_CURVE_LENGTH\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_START_PRICE\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"allowlist\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"allowlistMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"amountForAuctionAndDev\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"amountForDevs\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"approve\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"auctionMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"balanceOf\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"devMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"mintlistPriceWei\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"publicPriceWei\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"endAuctionAndSetupNonAuctionSaleInfo\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getApproved\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"_saleStartTime\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getAuctionPrice\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getOwnershipData\",\n    \"outputs\": [\n      {\n        \"components\": [\n          {\n            \"internalType\": \"address\",\n            \"name\": \"addr\",\n            \"type\": \"address\"\n          },\n          {\n            \"internalType\": \"uint64\",\n            \"name\": \"startTimestamp\",\n            \"type\": \"uint64\"\n          }\n        ],\n        \"internalType\": \"struct ERC721A.TokenOwnership\",\n        \"name\": \"\",\n        \"type\": \"tuple\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"isApprovedForAll\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicPriceWei\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicSaleKey\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"isPublicSaleOn\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"maxPerAddressDuringMint\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"name\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"nextOwnerToExplicitlySet\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"numberMinted\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"owner\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"ownerOf\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"callerPublicSaleKey\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"publicSaleMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"renounceOwnership\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"safeTransferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"bytes\",\n        \"name\": \"_data\",\n        \"type\": \"bytes\"\n      }\n    ],\n    \"name\": \"safeTransferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"saleConfig\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"auctionSaleStartTime\",\n        \"type\": \"uint32\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint32\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"mintlistPrice\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"publicPrice\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleKey\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address[]\",\n        \"name\": \"addresses\",\n        \"type\": \"address[]\"\n      },\n      {\n        \"internalType\": \"uint256[]\",\n        \"name\": \"numSlots\",\n        \"type\": \"uint256[]\"\n      }\n    ],\n    \"name\": \"seedAllowlist\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"approved\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"name\": \"setApprovalForAll\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"timestamp\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"setAuctionSaleStartTime\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"baseURI\",\n        \"type\": \"string\"\n      }\n    ],\n    \"name\": \"setBaseURI\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"setOwnersExplicit\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"key\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"setPublicSaleKey\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"bytes4\",\n        \"name\": \"interfaceId\",\n        \"type\": \"bytes4\"\n      }\n    ],\n    \"name\": \"supportsInterface\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"symbol\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"index\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenByIndex\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"index\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenOfOwnerByIndex\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenURI\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"totalSupply\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"transferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"newOwner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"transferOwnership\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"withdrawMoney\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  }\n]\n",
+									"to_block": "latest"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseContractCall",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "success"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/account/balance": {
+			"get": {
+				"tags": ["Token Balances"],
+				"summary": "Get native token balances",
+				"description": "Returns the balance for a specified address.",
+				"operationId": "GetAccountBalance",
+				"parameters": [
+					{
+						"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)"
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "A hex string referencing a wallet address",
+						"required": true,
+						"schema": {
+							"title": "Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a wallet address"
+						},
+						"example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+						"name": "address",
+						"in": "query"
+					},
+					{
+						"description": "block decimal number, hex number or 'latest'",
+						"required": false,
+						"schema": {
+							"title": "To Block",
+							"type": "string",
+							"description": "block decimal number, hex number or 'latest'"
+						},
+						"example": "latest",
+						"name": "to_block",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetBalance",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "ok"
+										},
+										"data": {
+											"title": "Data",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/account/tokens": {
+			"get": {
+				"tags": ["Token Balances"],
+				"summary": "Get ERC20 token balances",
+				"description": "Retrieve all token balances for all ERC20 tokens for a specified address.\n\nBy default, it will return all token balances for all ERC20 tokens that the address has ever received.\nYou can specify a contract address to check the balance of a non-standard contract.",
+				"operationId": "GetAccountTokens",
+				"parameters": [
+					{
+						"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)"
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "A hex string referencing a wallet address",
+						"required": true,
+						"schema": {
+							"title": "Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a wallet address"
+						},
+						"example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+						"name": "address",
+						"in": "query"
+					},
+					{
+						"description": "The address of the token contract",
+						"required": false,
+						"schema": {
+							"title": "Contract Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "The address of the token contract"
+						},
+						"example": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+						"name": "contract_address",
+						"in": "query"
+					},
+					{
+						"description": "block decimal number, hex number or 'latest'",
+						"required": false,
+						"schema": {
+							"title": "To Block",
+							"type": "string",
+							"description": "block decimal number, hex number or 'latest'"
+						},
+						"example": "latest",
+						"name": "to_block",
+						"in": "query"
+					},
+					{
+						"description": "The desired page size limit. Less or equal than 100",
+						"required": false,
+						"schema": {
+							"title": "Limit",
+							"maximum": 100,
+							"minimum": 1,
+							"type": "integer",
+							"description": "The desired page size limit. Less or equal than 100",
+							"default": 20
+						},
+						"name": "limit",
+						"in": "query"
+					},
+					{
+						"description": "The page offset",
+						"required": false,
+						"schema": {
+							"title": "Page",
+							"minimum": 1,
+							"type": "integer",
+							"description": "The page offset",
+							"default": 1
+						},
+						"name": "page",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetAccountTokens",
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "ok"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {
+												"title": "TokenMeta",
+												"required": [
+													"contract_address",
+													"decimals",
+													"name",
+													"symbol",
+													"balance"
+												],
+												"type": "object",
+												"properties": {
+													"contract_address": {
+														"title": "Contract Address",
+														"type": "string",
+														"description": "ERC-20 contract address."
+													},
+													"decimals": {
+														"title": "Decimals",
+														"type": "integer",
+														"description": "The number of decimals the token uses."
+													},
+													"name": {
+														"title": "Name",
+														"type": "string",
+														"description": "The name of the ERC-20 token."
+													},
+													"symbol": {
+														"title": "Symbol",
+														"type": "string",
+														"description": "The symbol of the ERC-20 token."
+													},
+													"logos": {
+														"title": "Logos",
+														"type": "array",
+														"items": {
+															"title": "TokenMetaLogo",
+															"required": ["uri", "width", "height"],
+															"type": "object",
+															"properties": {
+																"uri": {
+																	"title": "Uri",
+																	"type": "string",
+																	"description": "URI for the logo image."
+																},
+																"width": {
+																	"title": "Width",
+																	"type": "integer",
+																	"description": "The logo image's approximate width in pixels."
+																},
+																"height": {
+																	"title": "Height",
+																	"type": "integer",
+																	"description": "The logo image's approximate height in pixels."
+																}
+															}
+														},
+														"description": "List of logo images for the ERC-20 token."
+													},
+													"urls": {
+														"title": "Urls",
+														"type": "array",
+														"items": {
+															"title": "TokenMetaURL",
+															"required": ["name", "url"],
+															"type": "object",
+															"properties": {
+																"name": {
+																	"title": "Name",
+																	"type": "string",
+																	"description": "The name of the link."
+																},
+																"url": {
+																	"title": "Url",
+																	"type": "string",
+																	"description": "The URL of the link."
+																}
+															}
+														},
+														"description": "List of urls for the ERC-20 token."
+													},
+													"current_usd_price": {
+														"title": "Current Usd Price",
+														"type": "number",
+														"description": "The current price of the ERC-20 token in USD."
+													},
+													"balance": {
+														"title": "Balance",
+														"type": "string",
+														"description": "The balance of the ERC-20 token for a given wallet."
+													}
+												}
+											}
+										},
+										"next_page": {
+											"title": "Next Page",
+											"type": "integer"
+										},
+										"count": {
+											"title": "Count",
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/account/portfolios": {
+			"get": {
+				"tags": ["Portfolio Balances"],
+				"summary": "Get portfolios in the protocol owned by address",
+				"description": "Returns a list of portfolios for the specified address.",
+				"operationId": "GetAccountPortfolios",
+				"parameters": [
+					{
+						"description": "A hex string referencing a wallet address",
+						"required": true,
+						"schema": {
+							"title": "Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a wallet address"
+						},
+						"example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+						"name": "address",
+						"in": "query"
+					},
+					{
+						"description": "An array of strings to restrict results to any of the supported chains:[\"ethereum\", \"polygon\"], or use network id:[1, 137] - if left empty, will default to all chains.",
+						"required": false,
+						"schema": {
+							"title": "Chain Id",
+							"type": "array",
+							"items": {
+								"type": "integer"
+							},
+							"description": "An array of strings to restrict results to any of the supported chains:[\"ethereum\", \"polygon\"], or use network id:[1, 137] - if left empty, will default to all chains."
+						},
+						"name": "chain_id",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseAccountPortfolios",
+									"required": ["data"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "ok"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {
+												"title": "ProjectPortfolios",
+												"required": ["id", "name", "blockchain", "portfolios"],
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Id",
+														"type": "string"
+													},
+													"name": {
+														"title": "Name",
+														"type": "string"
+													},
+													"blockchain": {
+														"title": "Blockchain",
+														"type": "string"
+													},
+													"logo_url": {
+														"title": "Logo Url",
+														"type": "string"
+													},
+													"portfolios": {
+														"title": "Portfolios",
+														"type": "array",
+														"items": {
+															"title": "BaseDeFiPortfolio",
+															"required": ["pool", "type", "assets_deposited"],
+															"type": "object",
+															"properties": {
+																"pool": {
+																	"title": "Pool",
+																	"required": ["address", "created_at"],
+																	"type": "object",
+																	"properties": {
+																		"address": {
+																			"title": "Address",
+																			"type": "string"
+																		},
+																		"created_at": {
+																			"title": "Created At",
+																			"type": "string",
+																			"format": "date-time"
+																		}
+																	}
+																},
+																"type": {
+																	"title": "DeFiType",
+																	"enum": [
+																		"liquidity",
+																		"farming",
+																		"locked",
+																		"lending",
+																		"deposit"
+																	],
+																	"type": "string",
+																	"description": "An enumeration."
+																},
+																"assets_deposited": {
+																	"title": "Assets Deposited",
+																	"type": "array",
+																	"items": {
+																		"title": "PortfolioAssetObject",
+																		"required": ["asset", "amount"],
+																		"type": "object",
+																		"properties": {
+																			"asset": {
+																				"title": "DeFiAsset",
+																				"required": ["id"],
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"title": "Id",
+																						"type": "string"
+																					},
+																					"logo_url": {
+																						"title": "Logo Url",
+																						"type": "string"
+																					},
+																					"name": {
+																						"title": "Name",
+																						"type": "string",
+																						"default": ""
+																					},
+																					"symbol": {
+																						"title": "Symbol",
+																						"type": "string",
+																						"default": ""
+																					},
+																					"type": {
+																						"title": "Type",
+																						"type": "string",
+																						"default": ""
+																					}
+																				}
+																			},
+																			"amount": {
+																				"title": "Amount",
+																				"type": "number"
+																			},
+																			"usd_value": {
+																				"title": "Usd Value",
+																				"type": "number",
+																				"default": 0
+																			}
+																		}
+																	}
+																},
+																"assets_rewarded": {
+																	"title": "Assets Rewarded",
+																	"type": "array",
+																	"items": {
+																		"title": "PortfolioAssetObject",
+																		"required": ["asset", "amount"],
+																		"type": "object",
+																		"properties": {
+																			"asset": {
+																				"title": "DeFiAsset",
+																				"required": ["id"],
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"title": "Id",
+																						"type": "string"
+																					},
+																					"logo_url": {
+																						"title": "Logo Url",
+																						"type": "string"
+																					},
+																					"name": {
+																						"title": "Name",
+																						"type": "string",
+																						"default": ""
+																					},
+																					"symbol": {
+																						"title": "Symbol",
+																						"type": "string",
+																						"default": ""
+																					},
+																					"type": {
+																						"title": "Type",
+																						"type": "string",
+																						"default": ""
+																					}
+																				}
+																			},
+																			"amount": {
+																				"title": "Amount",
+																				"type": "number"
+																			},
+																			"usd_value": {
+																				"title": "Usd Value",
+																				"type": "number",
+																				"default": 0
+																			}
+																		}
+																	}
+																},
+																"stats": {
+																	"title": "Stats",
+																	"allOf": [
+																		{
+																			"title": "PortfolioStatus",
+																			"type": "object",
+																			"properties": {
+																				"usd_value": {
+																					"title": "Usd Value",
+																					"type": "number",
+																					"default": 0
+																				}
+																			}
+																		}
+																	],
+																	"default": {
+																		"usd_value": 0
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/v1/account/nfts": {
+			"get": {
+				"tags": ["NFT Balances"],
+				"summary": "Get NFTs owned by address",
+				"description": "Get the list of NFTs owned by an account.",
+				"operationId": "GetAccountNFTs",
+				"parameters": [
+					{
+						"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)",
+						"required": true,
+						"schema": {
+							"title": "Chain Id",
+							"type": "integer",
+							"description": "chain network id, see [list of details](https://docs.chainbase.com/reference/supported-chains)"
+						},
+						"example": "1",
+						"name": "chain_id",
+						"in": "query"
+					},
+					{
+						"description": "A hex string referencing a wallet address",
+						"required": true,
+						"schema": {
+							"title": "Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "A hex string referencing a wallet address"
+						},
+						"example": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+						"name": "address",
+						"in": "query"
+					},
+					{
+						"description": "The address of the NFT contract",
+						"required": false,
+						"schema": {
+							"title": "Contract Address",
+							"pattern": "^0[xX]{1}[a-fA-F0-9]{40}$",
+							"type": "string",
+							"description": "The address of the NFT contract"
+						},
+						"example": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+						"name": "contract_address",
+						"in": "query"
+					},
+					{
+						"description": "block decimal number, hex number or 'latest'",
+						"required": false,
+						"schema": {
+							"title": "To Block",
+							"type": "string",
+							"description": "block decimal number, hex number or 'latest'"
+						},
+						"example": "latest",
+						"name": "to_block",
+						"in": "query"
+					},
+					{
+						"description": "The page offset",
+						"required": false,
+						"schema": {
+							"title": "Page",
+							"minimum": 1,
+							"type": "integer",
+							"description": "The page offset",
+							"default": 1
+						},
+						"name": "page",
+						"in": "query"
+					},
+					{
+						"description": "The desired page size limit. Less or equal than 100",
+						"required": false,
+						"schema": {
+							"title": "Limit",
+							"maximum": 100,
+							"minimum": 1,
+							"type": "integer",
+							"description": "The desired page size limit. Less or equal than 100",
+							"default": 20
+						},
+						"name": "limit",
+						"in": "query"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ResponseGetAccountNFTs",
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer",
+											"default": 0
+										},
+										"message": {
+											"title": "Message",
+											"type": "string",
+											"default": "ok"
+										},
+										"data": {
+											"title": "Data",
+											"type": "array",
+											"items": {
+												"title": "NFTDetail",
+												"required": [
+													"contract_address",
+													"erc_type",
+													"mint_time",
+													"mint_transaction_hash",
+													"name",
+													"owner",
+													"symbol",
+													"token_id",
+													"token_uri",
+													"image_uri",
+													"total",
+													"total_string"
+												],
+												"type": "object",
+												"properties": {
+													"contract_address": {
+														"title": "Contract Address",
+														"type": "string",
+														"description": "The contract address"
+													},
+													"erc_type": {
+														"title": "Erc Type",
+														"type": "string",
+														"description": "ERC standard related to the contract."
+													},
+													"metadata": {
+														"title": "Metadata",
+														"type": "object",
+														"description": "The metadata of the item."
+													},
+													"mint_time": {
+														"title": "Mint Time",
+														"type": "string",
+														"description": "The timestamp when the item was minted.",
+														"format": "date-time"
+													},
+													"mint_transaction_hash": {
+														"title": "Mint Transaction Hash",
+														"type": "string",
+														"description": "The block number when the item was minted."
+													},
+													"name": {
+														"title": "Name",
+														"type": "string",
+														"description": "The name of the item."
+													},
+													"owner": {
+														"title": "Owner",
+														"type": "string",
+														"description": "The user address who owns the item now (null if the item is an ERC-1155 NFT)."
+													},
+													"symbol": {
+														"title": "Symbol",
+														"type": "string",
+														"description": "The symbol of the NFT contract."
+													},
+													"token_id": {
+														"title": "Token Id",
+														"type": "string",
+														"description": "The token ID number of the item."
+													},
+													"token_uri": {
+														"title": "Token Uri",
+														"type": "string",
+														"description": "The token URI of the item."
+													},
+													"image_uri": {
+														"title": "Image Uri",
+														"type": "string",
+														"description": "The image URI of the item."
+													},
+													"total": {
+														"title": "Total",
+														"type": "integer",
+														"description": "The total amount of the item."
+													},
+													"total_string": {
+														"title": "Total String",
+														"type": "string",
+														"description": "The total amount of item in string."
+													},
+													"traits": {
+														"title": "Traits",
+														"description": "List of traits of the item."
+													},
+													"rarity_score": {
+														"title": "Rarity Score",
+														"type": "number",
+														"description": "The rarity score for the item."
+													},
+													"rarity_rank": {
+														"title": "Rarity Rank",
+														"type": "integer",
+														"description": "The rarity rank for the item."
+													},
+													"floor_prices": {
+														"title": "Floor Prices",
+														"type": "array",
+														"items": {
+															"title": "NFTCollectionFloorPrice",
+															"type": "object",
+															"properties": {
+																"value": {
+																	"title": "Value",
+																	"type": "string",
+																	"description": "The ammount of the ERC-20 token."
+																},
+																"symbol": {
+																	"title": "Symbol",
+																	"type": "string",
+																	"description": "The symbol of the ERC-20 token."
+																},
+																"address": {
+																	"title": "Address",
+																	"type": "string",
+																	"description": "The address of the ERC-20 token."
+																}
+															}
+														},
+														"description": "List of floor prices."
+													}
+												}
+											}
+										},
+										"next_page": {
+											"title": "Next Page",
+											"type": "integer"
+										},
+										"count": {
+											"title": "Count",
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable Entity",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"title": "ErrorMessage",
+									"required": ["code", "message"],
+									"type": "object",
+									"properties": {
+										"code": {
+											"title": "Code",
+											"type": "integer"
+										},
+										"message": {
+											"title": "Message",
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"BlockDetail": {
+				"title": "BlockDetail",
+				"required": [
+					"number",
+					"hash",
+					"parent_hash",
+					"timestamp",
+					"difficulty",
+					"extra_data",
+					"gas_limit",
+					"gas_used",
+					"base_fee_per_gas",
+					"miner",
+					"mix_hash",
+					"nonce",
+					"receipts_root",
+					"sha3_uncles",
+					"size",
+					"state_root",
+					"transactions_root",
+					"transactions_count",
+					"uncles_count"
+				],
+				"type": "object",
+				"properties": {
+					"number": {
+						"title": "Number",
+						"type": "integer"
+					},
+					"hash": {
+						"title": "Hash",
+						"type": "string"
+					},
+					"parent_hash": {
+						"title": "Parent Hash",
+						"type": "string"
+					},
+					"timestamp": {
+						"title": "Timestamp",
+						"type": "string"
+					},
+					"difficulty": {
+						"title": "Difficulty",
+						"type": "string"
+					},
+					"extra_data": {
+						"title": "Extra Data",
+						"type": "string"
+					},
+					"gas_limit": {
+						"title": "Gas Limit",
+						"type": "integer"
+					},
+					"gas_used": {
+						"title": "Gas Used",
+						"type": "integer"
+					},
+					"base_fee_per_gas": {
+						"title": "Base Fee Per Gas",
+						"type": "integer"
+					},
+					"miner": {
+						"title": "Miner",
+						"type": "string"
+					},
+					"mix_hash": {
+						"title": "Mix Hash",
+						"type": "string"
+					},
+					"nonce": {
+						"title": "Nonce",
+						"type": "string"
+					},
+					"receipts_root": {
+						"title": "Receipts Root",
+						"type": "string"
+					},
+					"sha3_uncles": {
+						"title": "Sha3 Uncles",
+						"type": "string"
+					},
+					"size": {
+						"title": "Size",
+						"type": "integer"
+					},
+					"state_root": {
+						"title": "State Root",
+						"type": "string"
+					},
+					"transactions_root": {
+						"title": "Transactions Root",
+						"type": "string"
+					},
+					"transactions_count": {
+						"title": "Transactions Count",
+						"type": "integer"
+					},
+					"uncles_count": {
+						"title": "Uncles Count",
+						"type": "integer"
+					}
+				}
+			},
+			"ContractCallBody": {
+				"title": "ContractCallBody",
+				"required": [
+					"chain_id",
+					"contract_address",
+					"function_name",
+					"abi",
+					"params",
+					"to_block"
+				],
+				"type": "object",
+				"properties": {
+					"chain_id": {
+						"title": "Chain Id",
+						"type": "integer"
+					},
+					"contract_address": {
+						"title": "Contract Address",
+						"type": "string"
+					},
+					"function_name": {
+						"title": "Function Name",
+						"type": "string"
+					},
+					"abi": {
+						"title": "Abi",
+						"type": "string"
+					},
+					"params": {
+						"title": "Params",
+						"type": "array",
+						"items": {}
+					},
+					"to_block": {
+						"title": "To Block",
+						"type": "string"
+					}
+				},
+				"example": {
+					"chain_id": 1,
+					"contract_address": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+					"function_name": "name",
+					"abi": "[\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"maxBatchSize_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"collectionSize_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"amountForAuctionAndDev_\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"amountForDevs_\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"constructor\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"approved\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"Approval\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": false,\n        \"internalType\": \"bool\",\n        \"name\": \"approved\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"name\": \"ApprovalForAll\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"previousOwner\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"newOwner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"OwnershipTransferred\",\n    \"type\": \"event\"\n  },\n  {\n    \"anonymous\": false,\n    \"inputs\": [\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"indexed\": true,\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"Transfer\",\n    \"type\": \"event\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_DROP_INTERVAL\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_DROP_PER_STEP\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_END_PRICE\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_PRICE_CURVE_LENGTH\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"AUCTION_START_PRICE\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"allowlist\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"allowlistMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"amountForAuctionAndDev\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"amountForDevs\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"approve\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"auctionMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"balanceOf\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"devMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"mintlistPriceWei\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"publicPriceWei\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"endAuctionAndSetupNonAuctionSaleInfo\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getApproved\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"_saleStartTime\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getAuctionPrice\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"getOwnershipData\",\n    \"outputs\": [\n      {\n        \"components\": [\n          {\n            \"internalType\": \"address\",\n            \"name\": \"addr\",\n            \"type\": \"address\"\n          },\n          {\n            \"internalType\": \"uint64\",\n            \"name\": \"startTimestamp\",\n            \"type\": \"uint64\"\n          }\n        ],\n        \"internalType\": \"struct ERC721A.TokenOwnership\",\n        \"name\": \"\",\n        \"type\": \"tuple\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"isApprovedForAll\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicPriceWei\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicSaleKey\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"isPublicSaleOn\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"maxPerAddressDuringMint\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"name\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"nextOwnerToExplicitlySet\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"numberMinted\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"owner\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"ownerOf\",\n    \"outputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"\",\n        \"type\": \"address\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"callerPublicSaleKey\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"publicSaleMint\",\n    \"outputs\": [],\n    \"stateMutability\": \"payable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"renounceOwnership\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"safeTransferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      },\n      {\n        \"internalType\": \"bytes\",\n        \"name\": \"_data\",\n        \"type\": \"bytes\"\n      }\n    ],\n    \"name\": \"safeTransferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"saleConfig\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"auctionSaleStartTime\",\n        \"type\": \"uint32\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleStartTime\",\n        \"type\": \"uint32\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"mintlistPrice\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint64\",\n        \"name\": \"publicPrice\",\n        \"type\": \"uint64\"\n      },\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"publicSaleKey\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address[]\",\n        \"name\": \"addresses\",\n        \"type\": \"address[]\"\n      },\n      {\n        \"internalType\": \"uint256[]\",\n        \"name\": \"numSlots\",\n        \"type\": \"uint256[]\"\n      }\n    ],\n    \"name\": \"seedAllowlist\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"operator\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"approved\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"name\": \"setApprovalForAll\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"timestamp\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"setAuctionSaleStartTime\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"baseURI\",\n        \"type\": \"string\"\n      }\n    ],\n    \"name\": \"setBaseURI\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"quantity\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"setOwnersExplicit\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint32\",\n        \"name\": \"key\",\n        \"type\": \"uint32\"\n      }\n    ],\n    \"name\": \"setPublicSaleKey\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"bytes4\",\n        \"name\": \"interfaceId\",\n        \"type\": \"bytes4\"\n      }\n    ],\n    \"name\": \"supportsInterface\",\n    \"outputs\": [\n      {\n        \"internalType\": \"bool\",\n        \"name\": \"\",\n        \"type\": \"bool\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"symbol\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"index\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenByIndex\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"owner\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"index\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenOfOwnerByIndex\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"tokenURI\",\n    \"outputs\": [\n      {\n        \"internalType\": \"string\",\n        \"name\": \"\",\n        \"type\": \"string\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"totalSupply\",\n    \"outputs\": [\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"stateMutability\": \"view\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"from\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"address\",\n        \"name\": \"to\",\n        \"type\": \"address\"\n      },\n      {\n        \"internalType\": \"uint256\",\n        \"name\": \"tokenId\",\n        \"type\": \"uint256\"\n      }\n    ],\n    \"name\": \"transferFrom\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [\n      {\n        \"internalType\": \"address\",\n        \"name\": \"newOwner\",\n        \"type\": \"address\"\n      }\n    ],\n    \"name\": \"transferOwnership\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  },\n  {\n    \"inputs\": [],\n    \"name\": \"withdrawMoney\",\n    \"outputs\": [],\n    \"stateMutability\": \"nonpayable\",\n    \"type\": \"function\"\n  }\n]\n",
+					"to_block": "latest"
+				}
+			},
+			"ContractEventsData": {
+				"title": "ContractEventsData",
+				"required": [
+					"block_number",
+					"function",
+					"method_id",
+					"transaction_hash",
+					"transaction_index"
+				],
+				"type": "object",
+				"properties": {
+					"block_number": {
+						"title": "Block Number",
+						"type": "integer"
+					},
+					"function": {
+						"title": "Function",
+						"type": "string"
+					},
+					"method_id": {
+						"title": "Method Id",
+						"type": "string"
+					},
+					"transaction_hash": {
+						"title": "Transaction Hash",
+						"type": "string"
+					},
+					"transaction_index": {
+						"title": "Transaction Index",
+						"type": "integer"
+					}
+				}
+			},
+			"ErrorMessage": {
+				"title": "ErrorMessage",
+				"required": ["code", "message"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer"
+					},
+					"message": {
+						"title": "Message",
+						"type": "string"
+					}
+				}
+			},
+			"GetLastBlockNumberData": {
+				"title": "GetLastBlockNumberData",
+				"required": ["number", "hash"],
+				"type": "object",
+				"properties": {
+					"number": {
+						"title": "Number",
+						"type": "integer"
+					},
+					"hash": {
+						"title": "Hash",
+						"type": "string"
+					}
+				}
+			},
+			"ResponseContractCall": {
+				"title": "ResponseContractCall",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {}
+					}
+				}
+			},
+			"ResponseContractEvents": {
+				"title": "ResponseContractEvents",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {
+							"title": "ContractEventsData",
+							"required": [
+								"block_number",
+								"function",
+								"method_id",
+								"transaction_hash",
+								"transaction_index"
+							],
+							"type": "object",
+							"properties": {
+								"block_number": {
+									"title": "Block Number",
+									"type": "integer"
+								},
+								"function": {
+									"title": "Function",
+									"type": "string"
+								},
+								"method_id": {
+									"title": "Method Id",
+									"type": "string"
+								},
+								"transaction_hash": {
+									"title": "Transaction Hash",
+									"type": "string"
+								},
+								"transaction_index": {
+									"title": "Transaction Index",
+									"type": "integer"
+								}
+							}
+						}
+					},
+					"next_page": {
+						"title": "Next Page",
+						"type": "integer"
+					},
+					"count": {
+						"title": "Count",
+						"type": "integer"
+					}
+				}
+			},
+			"ResponseGetAccountTxs": {
+				"title": "ResponseGetAccountTxs",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {
+							"title": "TxDetail",
+							"required": [
+								"type",
+								"status",
+								"block_number",
+								"block_timestamp",
+								"transaction_hash",
+								"transaction_index",
+								"from_address",
+								"to_address",
+								"value",
+								"input",
+								"nonce",
+								"contract_address",
+								"gas",
+								"gas_price",
+								"gas_used",
+								"effective_gas_price",
+								"cumulative_gas_used",
+								"max_fee_per_gas",
+								"max_priority_fee_per_gas",
+								"tx_fee",
+								"saving_fee",
+								"burnt_fee"
+							],
+							"type": "object",
+							"properties": {
+								"type": {
+									"title": "Type",
+									"type": "integer"
+								},
+								"status": {
+									"title": "Status",
+									"type": "integer"
+								},
+								"block_number": {
+									"title": "Block Number",
+									"type": "integer"
+								},
+								"block_timestamp": {
+									"title": "Block Timestamp",
+									"type": "string"
+								},
+								"transaction_hash": {
+									"title": "Transaction Hash",
+									"type": "string"
+								},
+								"transaction_index": {
+									"title": "Transaction Index",
+									"type": "integer"
+								},
+								"from_address": {
+									"title": "From Address",
+									"type": "string"
+								},
+								"to_address": {
+									"title": "To Address",
+									"type": "string"
+								},
+								"value": {
+									"title": "Value",
+									"type": "string"
+								},
+								"input": {
+									"title": "Input",
+									"type": "string"
+								},
+								"nonce": {
+									"title": "Nonce",
+									"type": "string"
+								},
+								"contract_address": {
+									"title": "Contract Address",
+									"type": "string"
+								},
+								"gas": {
+									"title": "Gas",
+									"type": "integer"
+								},
+								"gas_price": {
+									"title": "Gas Price",
+									"type": "integer"
+								},
+								"gas_used": {
+									"title": "Gas Used",
+									"type": "integer"
+								},
+								"effective_gas_price": {
+									"title": "Effective Gas Price",
+									"type": "integer"
+								},
+								"cumulative_gas_used": {
+									"title": "Cumulative Gas Used",
+									"type": "integer"
+								},
+								"max_fee_per_gas": {
+									"title": "Max Fee Per Gas",
+									"type": "integer"
+								},
+								"max_priority_fee_per_gas": {
+									"title": "Max Priority Fee Per Gas",
+									"type": "integer"
+								},
+								"tx_fee": {
+									"title": "Tx Fee",
+									"type": "integer"
+								},
+								"saving_fee": {
+									"title": "Saving Fee",
+									"type": "integer"
+								},
+								"burnt_fee": {
+									"title": "Burnt Fee",
+									"type": "integer"
+								}
+							}
+						}
+					},
+					"next_page": {
+						"title": "Next Page",
+						"type": "integer"
+					},
+					"count": {
+						"title": "Count",
+						"type": "integer"
+					}
+				}
+			},
+			"ResponseGetBlockDetail": {
+				"title": "ResponseGetBlockDetail",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "BlockDetail",
+						"required": [
+							"number",
+							"hash",
+							"parent_hash",
+							"timestamp",
+							"difficulty",
+							"extra_data",
+							"gas_limit",
+							"gas_used",
+							"base_fee_per_gas",
+							"miner",
+							"mix_hash",
+							"nonce",
+							"receipts_root",
+							"sha3_uncles",
+							"size",
+							"state_root",
+							"transactions_root",
+							"transactions_count",
+							"uncles_count"
+						],
+						"type": "object",
+						"properties": {
+							"number": {
+								"title": "Number",
+								"type": "integer"
+							},
+							"hash": {
+								"title": "Hash",
+								"type": "string"
+							},
+							"parent_hash": {
+								"title": "Parent Hash",
+								"type": "string"
+							},
+							"timestamp": {
+								"title": "Timestamp",
+								"type": "string"
+							},
+							"difficulty": {
+								"title": "Difficulty",
+								"type": "string"
+							},
+							"extra_data": {
+								"title": "Extra Data",
+								"type": "string"
+							},
+							"gas_limit": {
+								"title": "Gas Limit",
+								"type": "integer"
+							},
+							"gas_used": {
+								"title": "Gas Used",
+								"type": "integer"
+							},
+							"base_fee_per_gas": {
+								"title": "Base Fee Per Gas",
+								"type": "integer"
+							},
+							"miner": {
+								"title": "Miner",
+								"type": "string"
+							},
+							"mix_hash": {
+								"title": "Mix Hash",
+								"type": "string"
+							},
+							"nonce": {
+								"title": "Nonce",
+								"type": "string"
+							},
+							"receipts_root": {
+								"title": "Receipts Root",
+								"type": "string"
+							},
+							"sha3_uncles": {
+								"title": "Sha3 Uncles",
+								"type": "string"
+							},
+							"size": {
+								"title": "Size",
+								"type": "integer"
+							},
+							"state_root": {
+								"title": "State Root",
+								"type": "string"
+							},
+							"transactions_root": {
+								"title": "Transactions Root",
+								"type": "string"
+							},
+							"transactions_count": {
+								"title": "Transactions Count",
+								"type": "integer"
+							},
+							"uncles_count": {
+								"title": "Uncles Count",
+								"type": "integer"
+							}
+						}
+					}
+				}
+			},
+			"ResponseGetLastBlockNumber": {
+				"title": "ResponseGetLastBlockNumber",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "GetLastBlockNumberData",
+						"required": ["number", "hash"],
+						"type": "object",
+						"properties": {
+							"number": {
+								"title": "Number",
+								"type": "integer"
+							},
+							"hash": {
+								"title": "Hash",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"ResponseGetTxDetail": {
+				"title": "ResponseGetTxDetail",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "success"
+					},
+					"data": {
+						"title": "TxDetail",
+						"required": [
+							"type",
+							"status",
+							"block_number",
+							"block_timestamp",
+							"transaction_hash",
+							"transaction_index",
+							"from_address",
+							"to_address",
+							"value",
+							"input",
+							"nonce",
+							"contract_address",
+							"gas",
+							"gas_price",
+							"gas_used",
+							"effective_gas_price",
+							"cumulative_gas_used",
+							"max_fee_per_gas",
+							"max_priority_fee_per_gas",
+							"tx_fee",
+							"saving_fee",
+							"burnt_fee"
+						],
+						"type": "object",
+						"properties": {
+							"type": {
+								"title": "Type",
+								"type": "integer"
+							},
+							"status": {
+								"title": "Status",
+								"type": "integer"
+							},
+							"block_number": {
+								"title": "Block Number",
+								"type": "integer"
+							},
+							"block_timestamp": {
+								"title": "Block Timestamp",
+								"type": "string"
+							},
+							"transaction_hash": {
+								"title": "Transaction Hash",
+								"type": "string"
+							},
+							"transaction_index": {
+								"title": "Transaction Index",
+								"type": "integer"
+							},
+							"from_address": {
+								"title": "From Address",
+								"type": "string"
+							},
+							"to_address": {
+								"title": "To Address",
+								"type": "string"
+							},
+							"value": {
+								"title": "Value",
+								"type": "string"
+							},
+							"input": {
+								"title": "Input",
+								"type": "string"
+							},
+							"nonce": {
+								"title": "Nonce",
+								"type": "string"
+							},
+							"contract_address": {
+								"title": "Contract Address",
+								"type": "string"
+							},
+							"gas": {
+								"title": "Gas",
+								"type": "integer"
+							},
+							"gas_price": {
+								"title": "Gas Price",
+								"type": "integer"
+							},
+							"gas_used": {
+								"title": "Gas Used",
+								"type": "integer"
+							},
+							"effective_gas_price": {
+								"title": "Effective Gas Price",
+								"type": "integer"
+							},
+							"cumulative_gas_used": {
+								"title": "Cumulative Gas Used",
+								"type": "integer"
+							},
+							"max_fee_per_gas": {
+								"title": "Max Fee Per Gas",
+								"type": "integer"
+							},
+							"max_priority_fee_per_gas": {
+								"title": "Max Priority Fee Per Gas",
+								"type": "integer"
+							},
+							"tx_fee": {
+								"title": "Tx Fee",
+								"type": "integer"
+							},
+							"saving_fee": {
+								"title": "Saving Fee",
+								"type": "integer"
+							},
+							"burnt_fee": {
+								"title": "Burnt Fee",
+								"type": "integer"
+							}
+						}
+					}
+				}
+			},
+			"TxDetail": {
+				"title": "TxDetail",
+				"required": [
+					"type",
+					"status",
+					"block_number",
+					"block_timestamp",
+					"transaction_hash",
+					"transaction_index",
+					"from_address",
+					"to_address",
+					"value",
+					"input",
+					"nonce",
+					"contract_address",
+					"gas",
+					"gas_price",
+					"gas_used",
+					"effective_gas_price",
+					"cumulative_gas_used",
+					"max_fee_per_gas",
+					"max_priority_fee_per_gas",
+					"tx_fee",
+					"saving_fee",
+					"burnt_fee"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"title": "Type",
+						"type": "integer"
+					},
+					"status": {
+						"title": "Status",
+						"type": "integer"
+					},
+					"block_number": {
+						"title": "Block Number",
+						"type": "integer"
+					},
+					"block_timestamp": {
+						"title": "Block Timestamp",
+						"type": "string"
+					},
+					"transaction_hash": {
+						"title": "Transaction Hash",
+						"type": "string"
+					},
+					"transaction_index": {
+						"title": "Transaction Index",
+						"type": "integer"
+					},
+					"from_address": {
+						"title": "From Address",
+						"type": "string"
+					},
+					"to_address": {
+						"title": "To Address",
+						"type": "string"
+					},
+					"value": {
+						"title": "Value",
+						"type": "string"
+					},
+					"input": {
+						"title": "Input",
+						"type": "string"
+					},
+					"nonce": {
+						"title": "Nonce",
+						"type": "string"
+					},
+					"contract_address": {
+						"title": "Contract Address",
+						"type": "string"
+					},
+					"gas": {
+						"title": "Gas",
+						"type": "integer"
+					},
+					"gas_price": {
+						"title": "Gas Price",
+						"type": "integer"
+					},
+					"gas_used": {
+						"title": "Gas Used",
+						"type": "integer"
+					},
+					"effective_gas_price": {
+						"title": "Effective Gas Price",
+						"type": "integer"
+					},
+					"cumulative_gas_used": {
+						"title": "Cumulative Gas Used",
+						"type": "integer"
+					},
+					"max_fee_per_gas": {
+						"title": "Max Fee Per Gas",
+						"type": "integer"
+					},
+					"max_priority_fee_per_gas": {
+						"title": "Max Priority Fee Per Gas",
+						"type": "integer"
+					},
+					"tx_fee": {
+						"title": "Tx Fee",
+						"type": "integer"
+					},
+					"saving_fee": {
+						"title": "Saving Fee",
+						"type": "integer"
+					},
+					"burnt_fee": {
+						"title": "Burnt Fee",
+						"type": "integer"
+					}
+				}
+			},
+			"BaseDeFiPortfolio": {
+				"title": "BaseDeFiPortfolio",
+				"required": ["pool", "type", "assets_deposited"],
+				"type": "object",
+				"properties": {
+					"pool": {
+						"title": "Pool",
+						"required": ["address", "created_at"],
+						"type": "object",
+						"properties": {
+							"address": {
+								"title": "Address",
+								"type": "string"
+							},
+							"created_at": {
+								"title": "Created At",
+								"type": "string",
+								"format": "date-time"
+							}
+						}
+					},
+					"type": {
+						"title": "DeFiType",
+						"enum": ["liquidity", "farming", "locked", "lending", "deposit"],
+						"type": "string",
+						"description": "An enumeration."
+					},
+					"assets_deposited": {
+						"title": "Assets Deposited",
+						"type": "array",
+						"items": {
+							"title": "PortfolioAssetObject",
+							"required": ["asset", "amount"],
+							"type": "object",
+							"properties": {
+								"asset": {
+									"title": "DeFiAsset",
+									"required": ["id"],
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Id",
+											"type": "string"
+										},
+										"logo_url": {
+											"title": "Logo Url",
+											"type": "string"
+										},
+										"name": {
+											"title": "Name",
+											"type": "string",
+											"default": ""
+										},
+										"symbol": {
+											"title": "Symbol",
+											"type": "string",
+											"default": ""
+										},
+										"type": {
+											"title": "Type",
+											"type": "string",
+											"default": ""
+										}
+									}
+								},
+								"amount": {
+									"title": "Amount",
+									"type": "number"
+								},
+								"usd_value": {
+									"title": "Usd Value",
+									"type": "number",
+									"default": 0
+								}
+							}
+						}
+					},
+					"assets_rewarded": {
+						"title": "Assets Rewarded",
+						"type": "array",
+						"items": {
+							"title": "PortfolioAssetObject",
+							"required": ["asset", "amount"],
+							"type": "object",
+							"properties": {
+								"asset": {
+									"title": "DeFiAsset",
+									"required": ["id"],
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Id",
+											"type": "string"
+										},
+										"logo_url": {
+											"title": "Logo Url",
+											"type": "string"
+										},
+										"name": {
+											"title": "Name",
+											"type": "string",
+											"default": ""
+										},
+										"symbol": {
+											"title": "Symbol",
+											"type": "string",
+											"default": ""
+										},
+										"type": {
+											"title": "Type",
+											"type": "string",
+											"default": ""
+										}
+									}
+								},
+								"amount": {
+									"title": "Amount",
+									"type": "number"
+								},
+								"usd_value": {
+									"title": "Usd Value",
+									"type": "number",
+									"default": 0
+								}
+							}
+						}
+					},
+					"stats": {
+						"title": "Stats",
+						"allOf": [
+							{
+								"title": "PortfolioStatus",
+								"type": "object",
+								"properties": {
+									"usd_value": {
+										"title": "Usd Value",
+										"type": "number",
+										"default": 0
+									}
+								}
+							}
+						],
+						"default": {
+							"usd_value": 0
+						}
+					}
+				}
+			},
+			"DeFiAsset": {
+				"title": "DeFiAsset",
+				"required": ["id"],
+				"type": "object",
+				"properties": {
+					"id": {
+						"title": "Id",
+						"type": "string"
+					},
+					"logo_url": {
+						"title": "Logo Url",
+						"type": "string"
+					},
+					"name": {
+						"title": "Name",
+						"type": "string",
+						"default": ""
+					},
+					"symbol": {
+						"title": "Symbol",
+						"type": "string",
+						"default": ""
+					},
+					"type": {
+						"title": "Type",
+						"type": "string",
+						"default": ""
+					}
+				}
+			},
+			"DeFiType": {
+				"title": "DeFiType",
+				"enum": ["liquidity", "farming", "locked", "lending", "deposit"],
+				"type": "string",
+				"description": "An enumeration."
+			},
+			"NFTCollectionFloorPrice": {
+				"title": "NFTCollectionFloorPrice",
+				"type": "object",
+				"properties": {
+					"value": {
+						"title": "Value",
+						"type": "string",
+						"description": "The ammount of the ERC-20 token."
+					},
+					"symbol": {
+						"title": "Symbol",
+						"type": "string",
+						"description": "The symbol of the ERC-20 token."
+					},
+					"address": {
+						"title": "Address",
+						"type": "string",
+						"description": "The address of the ERC-20 token."
+					}
+				}
+			},
+			"NFTDetail": {
+				"title": "NFTDetail",
+				"required": [
+					"contract_address",
+					"erc_type",
+					"mint_time",
+					"mint_transaction_hash",
+					"name",
+					"owner",
+					"symbol",
+					"token_id",
+					"token_uri",
+					"image_uri",
+					"total",
+					"total_string"
+				],
+				"type": "object",
+				"properties": {
+					"contract_address": {
+						"title": "Contract Address",
+						"type": "string",
+						"description": "The contract address"
+					},
+					"erc_type": {
+						"title": "Erc Type",
+						"type": "string",
+						"description": "ERC standard related to the contract."
+					},
+					"metadata": {
+						"title": "Metadata",
+						"type": "object",
+						"description": "The metadata of the item."
+					},
+					"mint_time": {
+						"title": "Mint Time",
+						"type": "string",
+						"description": "The timestamp when the item was minted.",
+						"format": "date-time"
+					},
+					"mint_transaction_hash": {
+						"title": "Mint Transaction Hash",
+						"type": "string",
+						"description": "The block number when the item was minted."
+					},
+					"name": {
+						"title": "Name",
+						"type": "string",
+						"description": "The name of the item."
+					},
+					"owner": {
+						"title": "Owner",
+						"type": "string",
+						"description": "The user address who owns the item now (null if the item is an ERC-1155 NFT)."
+					},
+					"symbol": {
+						"title": "Symbol",
+						"type": "string",
+						"description": "The symbol of the NFT contract."
+					},
+					"token_id": {
+						"title": "Token Id",
+						"type": "string",
+						"description": "The token ID number of the item."
+					},
+					"token_uri": {
+						"title": "Token Uri",
+						"type": "string",
+						"description": "The token URI of the item."
+					},
+					"image_uri": {
+						"title": "Image Uri",
+						"type": "string",
+						"description": "The image URI of the item."
+					},
+					"total": {
+						"title": "Total",
+						"type": "integer",
+						"description": "The total amount of the item."
+					},
+					"total_string": {
+						"title": "Total String",
+						"type": "string",
+						"description": "The total amount of item in string."
+					},
+					"traits": {
+						"title": "Traits",
+						"description": "List of traits of the item."
+					},
+					"rarity_score": {
+						"title": "Rarity Score",
+						"type": "number",
+						"description": "The rarity score for the item."
+					},
+					"rarity_rank": {
+						"title": "Rarity Rank",
+						"type": "integer",
+						"description": "The rarity rank for the item."
+					},
+					"floor_prices": {
+						"title": "Floor Prices",
+						"type": "array",
+						"items": {
+							"title": "NFTCollectionFloorPrice",
+							"type": "object",
+							"properties": {
+								"value": {
+									"title": "Value",
+									"type": "string",
+									"description": "The ammount of the ERC-20 token."
+								},
+								"symbol": {
+									"title": "Symbol",
+									"type": "string",
+									"description": "The symbol of the ERC-20 token."
+								},
+								"address": {
+									"title": "Address",
+									"type": "string",
+									"description": "The address of the ERC-20 token."
+								}
+							}
+						},
+						"description": "List of floor prices."
+					}
+				}
+			},
+			"Pool": {
+				"title": "Pool",
+				"required": ["address", "created_at"],
+				"type": "object",
+				"properties": {
+					"address": {
+						"title": "Address",
+						"type": "string"
+					},
+					"created_at": {
+						"title": "Created At",
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			},
+			"PortfolioAssetObject": {
+				"title": "PortfolioAssetObject",
+				"required": ["asset", "amount"],
+				"type": "object",
+				"properties": {
+					"asset": {
+						"title": "DeFiAsset",
+						"required": ["id"],
+						"type": "object",
+						"properties": {
+							"id": {
+								"title": "Id",
+								"type": "string"
+							},
+							"logo_url": {
+								"title": "Logo Url",
+								"type": "string"
+							},
+							"name": {
+								"title": "Name",
+								"type": "string",
+								"default": ""
+							},
+							"symbol": {
+								"title": "Symbol",
+								"type": "string",
+								"default": ""
+							},
+							"type": {
+								"title": "Type",
+								"type": "string",
+								"default": ""
+							}
+						}
+					},
+					"amount": {
+						"title": "Amount",
+						"type": "number"
+					},
+					"usd_value": {
+						"title": "Usd Value",
+						"type": "number",
+						"default": 0
+					}
+				}
+			},
+			"PortfolioStatus": {
+				"title": "PortfolioStatus",
+				"type": "object",
+				"properties": {
+					"usd_value": {
+						"title": "Usd Value",
+						"type": "number",
+						"default": 0
+					}
+				}
+			},
+			"ProjectPortfolios": {
+				"title": "ProjectPortfolios",
+				"required": ["id", "name", "blockchain", "portfolios"],
+				"type": "object",
+				"properties": {
+					"id": {
+						"title": "Id",
+						"type": "string"
+					},
+					"name": {
+						"title": "Name",
+						"type": "string"
+					},
+					"blockchain": {
+						"title": "Blockchain",
+						"type": "string"
+					},
+					"logo_url": {
+						"title": "Logo Url",
+						"type": "string"
+					},
+					"portfolios": {
+						"title": "Portfolios",
+						"type": "array",
+						"items": {
+							"title": "BaseDeFiPortfolio",
+							"required": ["pool", "type", "assets_deposited"],
+							"type": "object",
+							"properties": {
+								"pool": {
+									"title": "Pool",
+									"required": ["address", "created_at"],
+									"type": "object",
+									"properties": {
+										"address": {
+											"title": "Address",
+											"type": "string"
+										},
+										"created_at": {
+											"title": "Created At",
+											"type": "string",
+											"format": "date-time"
+										}
+									}
+								},
+								"type": {
+									"title": "DeFiType",
+									"enum": [
+										"liquidity",
+										"farming",
+										"locked",
+										"lending",
+										"deposit"
+									],
+									"type": "string",
+									"description": "An enumeration."
+								},
+								"assets_deposited": {
+									"title": "Assets Deposited",
+									"type": "array",
+									"items": {
+										"title": "PortfolioAssetObject",
+										"required": ["asset", "amount"],
+										"type": "object",
+										"properties": {
+											"asset": {
+												"title": "DeFiAsset",
+												"required": ["id"],
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Id",
+														"type": "string"
+													},
+													"logo_url": {
+														"title": "Logo Url",
+														"type": "string"
+													},
+													"name": {
+														"title": "Name",
+														"type": "string",
+														"default": ""
+													},
+													"symbol": {
+														"title": "Symbol",
+														"type": "string",
+														"default": ""
+													},
+													"type": {
+														"title": "Type",
+														"type": "string",
+														"default": ""
+													}
+												}
+											},
+											"amount": {
+												"title": "Amount",
+												"type": "number"
+											},
+											"usd_value": {
+												"title": "Usd Value",
+												"type": "number",
+												"default": 0
+											}
+										}
+									}
+								},
+								"assets_rewarded": {
+									"title": "Assets Rewarded",
+									"type": "array",
+									"items": {
+										"title": "PortfolioAssetObject",
+										"required": ["asset", "amount"],
+										"type": "object",
+										"properties": {
+											"asset": {
+												"title": "DeFiAsset",
+												"required": ["id"],
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Id",
+														"type": "string"
+													},
+													"logo_url": {
+														"title": "Logo Url",
+														"type": "string"
+													},
+													"name": {
+														"title": "Name",
+														"type": "string",
+														"default": ""
+													},
+													"symbol": {
+														"title": "Symbol",
+														"type": "string",
+														"default": ""
+													},
+													"type": {
+														"title": "Type",
+														"type": "string",
+														"default": ""
+													}
+												}
+											},
+											"amount": {
+												"title": "Amount",
+												"type": "number"
+											},
+											"usd_value": {
+												"title": "Usd Value",
+												"type": "number",
+												"default": 0
+											}
+										}
+									}
+								},
+								"stats": {
+									"title": "Stats",
+									"allOf": [
+										{
+											"title": "PortfolioStatus",
+											"type": "object",
+											"properties": {
+												"usd_value": {
+													"title": "Usd Value",
+													"type": "number",
+													"default": 0
+												}
+											}
+										}
+									],
+									"default": {
+										"usd_value": 0
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"ResponseAccountPortfolios": {
+				"title": "ResponseAccountPortfolios",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "ok"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {
+							"title": "ProjectPortfolios",
+							"required": ["id", "name", "blockchain", "portfolios"],
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Id",
+									"type": "string"
+								},
+								"name": {
+									"title": "Name",
+									"type": "string"
+								},
+								"blockchain": {
+									"title": "Blockchain",
+									"type": "string"
+								},
+								"logo_url": {
+									"title": "Logo Url",
+									"type": "string"
+								},
+								"portfolios": {
+									"title": "Portfolios",
+									"type": "array",
+									"items": {
+										"title": "BaseDeFiPortfolio",
+										"required": ["pool", "type", "assets_deposited"],
+										"type": "object",
+										"properties": {
+											"pool": {
+												"title": "Pool",
+												"required": ["address", "created_at"],
+												"type": "object",
+												"properties": {
+													"address": {
+														"title": "Address",
+														"type": "string"
+													},
+													"created_at": {
+														"title": "Created At",
+														"type": "string",
+														"format": "date-time"
+													}
+												}
+											},
+											"type": {
+												"title": "DeFiType",
+												"enum": [
+													"liquidity",
+													"farming",
+													"locked",
+													"lending",
+													"deposit"
+												],
+												"type": "string",
+												"description": "An enumeration."
+											},
+											"assets_deposited": {
+												"title": "Assets Deposited",
+												"type": "array",
+												"items": {
+													"title": "PortfolioAssetObject",
+													"required": ["asset", "amount"],
+													"type": "object",
+													"properties": {
+														"asset": {
+															"title": "DeFiAsset",
+															"required": ["id"],
+															"type": "object",
+															"properties": {
+																"id": {
+																	"title": "Id",
+																	"type": "string"
+																},
+																"logo_url": {
+																	"title": "Logo Url",
+																	"type": "string"
+																},
+																"name": {
+																	"title": "Name",
+																	"type": "string",
+																	"default": ""
+																},
+																"symbol": {
+																	"title": "Symbol",
+																	"type": "string",
+																	"default": ""
+																},
+																"type": {
+																	"title": "Type",
+																	"type": "string",
+																	"default": ""
+																}
+															}
+														},
+														"amount": {
+															"title": "Amount",
+															"type": "number"
+														},
+														"usd_value": {
+															"title": "Usd Value",
+															"type": "number",
+															"default": 0
+														}
+													}
+												}
+											},
+											"assets_rewarded": {
+												"title": "Assets Rewarded",
+												"type": "array",
+												"items": {
+													"title": "PortfolioAssetObject",
+													"required": ["asset", "amount"],
+													"type": "object",
+													"properties": {
+														"asset": {
+															"title": "DeFiAsset",
+															"required": ["id"],
+															"type": "object",
+															"properties": {
+																"id": {
+																	"title": "Id",
+																	"type": "string"
+																},
+																"logo_url": {
+																	"title": "Logo Url",
+																	"type": "string"
+																},
+																"name": {
+																	"title": "Name",
+																	"type": "string",
+																	"default": ""
+																},
+																"symbol": {
+																	"title": "Symbol",
+																	"type": "string",
+																	"default": ""
+																},
+																"type": {
+																	"title": "Type",
+																	"type": "string",
+																	"default": ""
+																}
+															}
+														},
+														"amount": {
+															"title": "Amount",
+															"type": "number"
+														},
+														"usd_value": {
+															"title": "Usd Value",
+															"type": "number",
+															"default": 0
+														}
+													}
+												}
+											},
+											"stats": {
+												"title": "Stats",
+												"allOf": [
+													{
+														"title": "PortfolioStatus",
+														"type": "object",
+														"properties": {
+															"usd_value": {
+																"title": "Usd Value",
+																"type": "number",
+																"default": 0
+															}
+														}
+													}
+												],
+												"default": {
+													"usd_value": 0
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"ResponseGetAccountNFTs": {
+				"title": "ResponseGetAccountNFTs",
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "ok"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {
+							"title": "NFTDetail",
+							"required": [
+								"contract_address",
+								"erc_type",
+								"mint_time",
+								"mint_transaction_hash",
+								"name",
+								"owner",
+								"symbol",
+								"token_id",
+								"token_uri",
+								"image_uri",
+								"total",
+								"total_string"
+							],
+							"type": "object",
+							"properties": {
+								"contract_address": {
+									"title": "Contract Address",
+									"type": "string",
+									"description": "The contract address"
+								},
+								"erc_type": {
+									"title": "Erc Type",
+									"type": "string",
+									"description": "ERC standard related to the contract."
+								},
+								"metadata": {
+									"title": "Metadata",
+									"type": "object",
+									"description": "The metadata of the item."
+								},
+								"mint_time": {
+									"title": "Mint Time",
+									"type": "string",
+									"description": "The timestamp when the item was minted.",
+									"format": "date-time"
+								},
+								"mint_transaction_hash": {
+									"title": "Mint Transaction Hash",
+									"type": "string",
+									"description": "The block number when the item was minted."
+								},
+								"name": {
+									"title": "Name",
+									"type": "string",
+									"description": "The name of the item."
+								},
+								"owner": {
+									"title": "Owner",
+									"type": "string",
+									"description": "The user address who owns the item now (null if the item is an ERC-1155 NFT)."
+								},
+								"symbol": {
+									"title": "Symbol",
+									"type": "string",
+									"description": "The symbol of the NFT contract."
+								},
+								"token_id": {
+									"title": "Token Id",
+									"type": "string",
+									"description": "The token ID number of the item."
+								},
+								"token_uri": {
+									"title": "Token Uri",
+									"type": "string",
+									"description": "The token URI of the item."
+								},
+								"image_uri": {
+									"title": "Image Uri",
+									"type": "string",
+									"description": "The image URI of the item."
+								},
+								"total": {
+									"title": "Total",
+									"type": "integer",
+									"description": "The total amount of the item."
+								},
+								"total_string": {
+									"title": "Total String",
+									"type": "string",
+									"description": "The total amount of item in string."
+								},
+								"traits": {
+									"title": "Traits",
+									"description": "List of traits of the item."
+								},
+								"rarity_score": {
+									"title": "Rarity Score",
+									"type": "number",
+									"description": "The rarity score for the item."
+								},
+								"rarity_rank": {
+									"title": "Rarity Rank",
+									"type": "integer",
+									"description": "The rarity rank for the item."
+								},
+								"floor_prices": {
+									"title": "Floor Prices",
+									"type": "array",
+									"items": {
+										"title": "NFTCollectionFloorPrice",
+										"type": "object",
+										"properties": {
+											"value": {
+												"title": "Value",
+												"type": "string",
+												"description": "The ammount of the ERC-20 token."
+											},
+											"symbol": {
+												"title": "Symbol",
+												"type": "string",
+												"description": "The symbol of the ERC-20 token."
+											},
+											"address": {
+												"title": "Address",
+												"type": "string",
+												"description": "The address of the ERC-20 token."
+											}
+										}
+									},
+									"description": "List of floor prices."
+								}
+							}
+						}
+					},
+					"next_page": {
+						"title": "Next Page",
+						"type": "integer"
+					},
+					"count": {
+						"title": "Count",
+						"type": "integer"
+					}
+				}
+			},
+			"ResponseGetAccountTokens": {
+				"title": "ResponseGetAccountTokens",
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "ok"
+					},
+					"data": {
+						"title": "Data",
+						"type": "array",
+						"items": {
+							"title": "TokenMeta",
+							"required": [
+								"contract_address",
+								"decimals",
+								"name",
+								"symbol",
+								"balance"
+							],
+							"type": "object",
+							"properties": {
+								"contract_address": {
+									"title": "Contract Address",
+									"type": "string",
+									"description": "ERC-20 contract address."
+								},
+								"decimals": {
+									"title": "Decimals",
+									"type": "integer",
+									"description": "The number of decimals the token uses."
+								},
+								"name": {
+									"title": "Name",
+									"type": "string",
+									"description": "The name of the ERC-20 token."
+								},
+								"symbol": {
+									"title": "Symbol",
+									"type": "string",
+									"description": "The symbol of the ERC-20 token."
+								},
+								"logos": {
+									"title": "Logos",
+									"type": "array",
+									"items": {
+										"title": "TokenMetaLogo",
+										"required": ["uri", "width", "height"],
+										"type": "object",
+										"properties": {
+											"uri": {
+												"title": "Uri",
+												"type": "string",
+												"description": "URI for the logo image."
+											},
+											"width": {
+												"title": "Width",
+												"type": "integer",
+												"description": "The logo image's approximate width in pixels."
+											},
+											"height": {
+												"title": "Height",
+												"type": "integer",
+												"description": "The logo image's approximate height in pixels."
+											}
+										}
+									},
+									"description": "List of logo images for the ERC-20 token."
+								},
+								"urls": {
+									"title": "Urls",
+									"type": "array",
+									"items": {
+										"title": "TokenMetaURL",
+										"required": ["name", "url"],
+										"type": "object",
+										"properties": {
+											"name": {
+												"title": "Name",
+												"type": "string",
+												"description": "The name of the link."
+											},
+											"url": {
+												"title": "Url",
+												"type": "string",
+												"description": "The URL of the link."
+											}
+										}
+									},
+									"description": "List of urls for the ERC-20 token."
+								},
+								"current_usd_price": {
+									"title": "Current Usd Price",
+									"type": "number",
+									"description": "The current price of the ERC-20 token in USD."
+								},
+								"balance": {
+									"title": "Balance",
+									"type": "string",
+									"description": "The balance of the ERC-20 token for a given wallet."
+								}
+							}
+						}
+					},
+					"next_page": {
+						"title": "Next Page",
+						"type": "integer"
+					},
+					"count": {
+						"title": "Count",
+						"type": "integer"
+					}
+				}
+			},
+			"ResponseGetBalance": {
+				"title": "ResponseGetBalance",
+				"required": ["data"],
+				"type": "object",
+				"properties": {
+					"code": {
+						"title": "Code",
+						"type": "integer",
+						"default": 0
+					},
+					"message": {
+						"title": "Message",
+						"type": "string",
+						"default": "ok"
+					},
+					"data": {
+						"title": "Data",
+						"type": "string"
+					}
+				}
+			},
+			"TokenMeta": {
+				"title": "TokenMeta",
+				"required": [
+					"contract_address",
+					"decimals",
+					"name",
+					"symbol",
+					"balance"
+				],
+				"type": "object",
+				"properties": {
+					"contract_address": {
+						"title": "Contract Address",
+						"type": "string",
+						"description": "ERC-20 contract address."
+					},
+					"decimals": {
+						"title": "Decimals",
+						"type": "integer",
+						"description": "The number of decimals the token uses."
+					},
+					"name": {
+						"title": "Name",
+						"type": "string",
+						"description": "The name of the ERC-20 token."
+					},
+					"symbol": {
+						"title": "Symbol",
+						"type": "string",
+						"description": "The symbol of the ERC-20 token."
+					},
+					"logos": {
+						"title": "Logos",
+						"type": "array",
+						"items": {
+							"title": "TokenMetaLogo",
+							"required": ["uri", "width", "height"],
+							"type": "object",
+							"properties": {
+								"uri": {
+									"title": "Uri",
+									"type": "string",
+									"description": "URI for the logo image."
+								},
+								"width": {
+									"title": "Width",
+									"type": "integer",
+									"description": "The logo image's approximate width in pixels."
+								},
+								"height": {
+									"title": "Height",
+									"type": "integer",
+									"description": "The logo image's approximate height in pixels."
+								}
+							}
+						},
+						"description": "List of logo images for the ERC-20 token."
+					},
+					"urls": {
+						"title": "Urls",
+						"type": "array",
+						"items": {
+							"title": "TokenMetaURL",
+							"required": ["name", "url"],
+							"type": "object",
+							"properties": {
+								"name": {
+									"title": "Name",
+									"type": "string",
+									"description": "The name of the link."
+								},
+								"url": {
+									"title": "Url",
+									"type": "string",
+									"description": "The URL of the link."
+								}
+							}
+						},
+						"description": "List of urls for the ERC-20 token."
+					},
+					"current_usd_price": {
+						"title": "Current Usd Price",
+						"type": "number",
+						"description": "The current price of the ERC-20 token in USD."
+					},
+					"balance": {
+						"title": "Balance",
+						"type": "string",
+						"description": "The balance of the ERC-20 token for a given wallet."
+					}
+				}
+			},
+			"TokenMetaLogo": {
+				"title": "TokenMetaLogo",
+				"required": ["uri", "width", "height"],
+				"type": "object",
+				"properties": {
+					"uri": {
+						"title": "Uri",
+						"type": "string",
+						"description": "URI for the logo image."
+					},
+					"width": {
+						"title": "Width",
+						"type": "integer",
+						"description": "The logo image's approximate width in pixels."
+					},
+					"height": {
+						"title": "Height",
+						"type": "integer",
+						"description": "The logo image's approximate height in pixels."
+					}
+				}
+			},
+			"TokenMetaURL": {
+				"title": "TokenMetaURL",
+				"required": ["name", "url"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"title": "Name",
+						"type": "string",
+						"description": "The name of the link."
+					},
+					"url": {
+						"title": "Url",
+						"type": "string",
+						"description": "The URL of the link."
+					}
+				}
+			}
+		}
+	}
+}
