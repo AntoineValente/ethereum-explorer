@@ -12,7 +12,7 @@
   resolved "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@babel/runtime@^7.13.10", "@babel/runtime@^7.24.0":
+"@babel/runtime@^7.13.10", "@babel/runtime@^7.18.3", "@babel/runtime@^7.24.0":
   version "7.24.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.4.tgz#de795accd698007a66ba44add6cc86542aff1edd"
   integrity sha512-dkxf7+hn8mFBwKjs9bvBlArzLVxVbS8usaPUDd5p2a9JCL9tB8OaOVN1isD4+Xyk4ns89/xeOmbQvgdK7IIVdA==
@@ -2011,6 +2011,14 @@ json-buffer@3.0.1:
   resolved "https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz"
   integrity sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==
 
+json-schema-to-ts@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/json-schema-to-ts/-/json-schema-to-ts-3.0.1.tgz#bd2760144e4a44fc8a4ffedc96291bf6c76f7921"
+  integrity sha512-ANphQxnKbzLWPeYDmdoci8C9g9ttpfMx8etTlJJ8UCEmNXH9jxGkn3AAbMe+lR4N5OG/01nYxPrDyugLdsRt+A==
+  dependencies:
+    "@babel/runtime" "^7.18.3"
+    ts-algebra "^1.2.2"
+
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz"
@@ -2933,6 +2941,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+ts-algebra@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/ts-algebra/-/ts-algebra-1.2.2.tgz#b75d301c28cd4126cd344760a47b43e48e2872e0"
+  integrity sha512-kloPhf1hq3JbCPOTYoOWDKxebWjNb2o/LKnNfkWhxVVisFFmMJPPdJeGoGmM+iRLyoXAR61e08Pb+vUXINg8aA==
 
 ts-api-utils@^1.0.1:
   version "1.2.1"

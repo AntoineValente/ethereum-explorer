@@ -12,7 +12,7 @@ const useParseSlug = (
 	address: string;
 	activitySlug: ActivitySlug | undefined;
 } => ({
-	// biome-ignore lint/style/noNonNullAssertion: This page is in a non-optional route so there is always be a first element in slugs
+	// biome-ignore lint/style/noNonNullAssertion: This page is in a non-optional route so there will always be a first element in slugs
 	address: slugs[0]!,
 	activitySlug: slugs[1] as ActivitySlug,
 });
@@ -24,7 +24,7 @@ const Page: FC<AddressPageProps> = ({ params: { slug } }) => {
 
 	return (
 		<div className="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-3 md:mx-auto flex flex-col space-y-4 py-8">
-			<div className="flex justify-between">
+			<div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center">
 				<div className="flex flex-col">
 					<h1 className="text-3xl font-bold">Address details</h1>
 					<p className="dark:text-neutral-400 text-neutral-600">{address}</p>
@@ -33,11 +33,7 @@ const Page: FC<AddressPageProps> = ({ params: { slug } }) => {
 				<ModeToggle />
 			</div>
 
-			<div
-				className={
-					"flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4"
-				}
-			>
+			<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
 				<Suspense fallback={HeaderSkeleton}>
 					<Holdings address={address} />
 				</Suspense>

@@ -37,6 +37,7 @@
 		"autoprefixer": "^10.4.19",
 		"eslint": "^9.0.0",
 		"eslint-config-next": "14.2.2",
+		"json-schema-to-ts": "^3.0.1",
 		"openapi-typescript": "^6.7.5",
 		"postcss": "^8.4.38",
 		"tailwindcss": "^3.4.3",
