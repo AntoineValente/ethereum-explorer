@@ -48,9 +48,8 @@ export const Activity: FC<Props> = ({ address, activitySlug }) => {
 			defaultValue="transactions"
 			value={activitySlug}
 			onValueChange={onValueChange}
-			className="overflow-x-auto"
 		>
-			<TabsList>
+			<TabsList className="max-w-full overflow-x-auto">
 				{Object.entries(activitiesDict).map(([slug, { label }]) => (
 					<TabsTrigger key={slug} value={slug}>
 						{label}

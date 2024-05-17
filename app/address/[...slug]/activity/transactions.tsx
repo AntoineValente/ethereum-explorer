@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/table";
 import { createMiddleEllipsis } from "@/lib/address";
 import { getAmountWithDecimals } from "@/lib/amount";
+import { useBreakpoint } from "@/lib/breakpoint";
 import {
 	type GetAccountTxsFilters,
 	filtersToString,
@@ -109,7 +110,7 @@ export const Transactions: FC<AddressProps> = ({ address }) => {
 
 	return (
 		<div className="flex flex-col space-y-4">
-			<div className="flex flex-row space-x-2 px-1">
+			<div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 px-1">
 				<TransactionBlockInput
 					label="From block"
 					initialValue={filters.from_block}
@@ -209,6 +210,8 @@ const TransactionsPagination: FC<{
 }> = ({ count, currentPage, onPressPage }) => {
 	const totalPages = Math.ceil(count / 15);
 
+	const isMdScreen = useBreakpoint("md");
+
 	const onPrevious = () => onPressPage(currentPage === 1 ? 1 : currentPage + 1);
 	const onNext = () =>
 		onPressPage(currentPage === totalPages ? currentPage : currentPage + 1);
@@ -221,17 +224,18 @@ const TransactionsPagination: FC<{
 						<PaginationPrevious onClick={onPrevious} />
 					</PaginationItem>
 
-					{Array.from({ length: totalPages }, (_, i) => (
-						// biome-ignore lint/suspicious/noArrayIndexKey: This is a pagination component, the key is the page number (so static)
-						<PaginationItem key={i}>
-							<PaginationLink
-								isActive={i + 1 === currentPage}
-								onClick={() => onPressPage(i + 1)}
-							>
-								{i + 1}
-							</PaginationLink>
-						</PaginationItem>
-					))}
+					{isMdScreen &&
+						Array.from({ length: totalPages }, (_, i) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: This is a pagination component, the key is the page number (= static)
+							<PaginationItem key={i}>
+								<PaginationLink
+									isActive={i + 1 === currentPage}
+									onClick={() => onPressPage(i + 1)}
+								>
+									{i + 1}
+								</PaginationLink>
+							</PaginationItem>
+						))}
 
 					<PaginationItem>
 						<PaginationNext onClick={onNext} />
@@ -248,26 +252,31 @@ const TransactionsPagination: FC<{
 						<PaginationPrevious onClick={onPrevious} />
 					</PaginationItem>
 
-					{Array.from({ length: 3 }, (_, i) => (
-						// biome-ignore lint/suspicious/noArrayIndexKey: This is a pagination component, the key is the page number (so static)
-						<PaginationItem key={i}>
-							<PaginationLink
-								isActive={i + 1 === currentPage}
-								onClick={() => onPressPage(i + 1)}
-							>
-								{i + 1}
-							</PaginationLink>
-						</PaginationItem>
-					))}
+					{isMdScreen &&
+						Array.from({ length: 3 }, (_, i) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: This is a pagination component, the key is the page number (so static)
+							<PaginationItem key={i}>
+								<PaginationLink
+									isActive={i + 1 === currentPage}
+									onClick={() => onPressPage(i + 1)}
+								>
+									{i + 1}
+								</PaginationLink>
+							</PaginationItem>
+						))}
 
-					<PaginationItem>
-						<PaginationEllipsis />
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationLink onClick={() => onPressPage(totalPages)}>
-							{totalPages}
-						</PaginationLink>
-					</PaginationItem>
+					{isMdScreen && (
+						<>
+							<PaginationItem>
+								<PaginationEllipsis />
+							</PaginationItem>
+							<PaginationItem>
+								<PaginationLink onClick={() => onPressPage(totalPages)}>
+									{totalPages}
+								</PaginationLink>
+							</PaginationItem>
+						</>
+					)}
 					<PaginationItem>
 						<PaginationNext onClick={onNext} />
 					</PaginationItem>
@@ -283,7 +292,7 @@ const TransactionsPagination: FC<{
 					<PaginationPrevious onClick={onPrevious} />
 				</PaginationItem>
 
-				{currentPage >= 3 && (
+				{currentPage >= 3 && isMdScreen && (
 					<>
 						<PaginationItem>
 							<PaginationLink onClick={() => onPressPage(1)}>1</PaginationLink>
@@ -295,17 +304,21 @@ const TransactionsPagination: FC<{
 					</>
 				)}
 
-				<PaginationItem>
-					<PaginationLink onClick={() => onPressPage(currentPage - 1)}>
-						{currentPage - 1}
-					</PaginationLink>
-				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink isActive onClick={() => onPressPage(currentPage)}>
-						{currentPage}
-					</PaginationLink>
-				</PaginationItem>
-				{currentPage < totalPages && (
+				{isMdScreen && (
+					<>
+						<PaginationItem>
+							<PaginationLink onClick={() => onPressPage(currentPage - 1)}>
+								{currentPage - 1}
+							</PaginationLink>
+						</PaginationItem>
+						<PaginationItem>
+							<PaginationLink isActive onClick={() => onPressPage(currentPage)}>
+								{currentPage}
+							</PaginationLink>
+						</PaginationItem>
+					</>
+				)}
+				{currentPage < totalPages && isMdScreen && (
 					<PaginationItem>
 						<PaginationLink onClick={() => onPressPage(currentPage + 1)}>
 							{currentPage + 1}
@@ -313,7 +326,7 @@ const TransactionsPagination: FC<{
 					</PaginationItem>
 				)}
 
-				{currentPage < totalPages - 3 && (
+				{currentPage < totalPages - 3 && isMdScreen && (
 					<>
 						<PaginationItem>
 							<PaginationEllipsis />

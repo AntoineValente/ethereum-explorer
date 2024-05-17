@@ -207,6 +207,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kodingdotninja/use-tailwind-breakpoint@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kodingdotninja/use-tailwind-breakpoint/-/use-tailwind-breakpoint-1.0.0.tgz#2ccc01812fc911cf8228b264a82a2849eefe1cde"
+  integrity sha512-UVN3Au5qBg7H7tkLxInvbozpigout08AWj6wQORtvAO/F67Gb3sAayuOgppHZTjMuQPAUbVL+TWMLwivuIxWtw==
+
 "@next/env@14.2.2":
   version "14.2.2"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-14.2.2.tgz#6c36fe0b04a22ea78bd60a645ae77d53cd16d3ca"
