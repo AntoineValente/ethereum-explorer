@@ -6,6 +6,7 @@ const { GET } = createClient<paths>({
 	headers: {
 		"x-api-key": process.env.CHAINBASE_API_KEY,
 	},
+	cache: "no-store",
 });
 
 export const chainbaseSdk = {

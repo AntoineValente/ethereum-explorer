@@ -9,7 +9,7 @@ export const HeaderCard: FC<PropsWithChildren<HeaderCardProps>> = ({
 	title,
 	children,
 }) => (
-	<Card className="flex-1">
+	<Card className="flex-1 min-w-0">
 		<CardHeader>
 			<CardTitle>{title}</CardTitle>
 		</CardHeader>

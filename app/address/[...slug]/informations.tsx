@@ -31,7 +31,7 @@ export const Informations: FC<Props> = async ({ address }) => {
 		<HeaderCard title="Informations">
 			<HeaderCardSection title="Tags">
 				<div className="flex flex-row flex-wrap">
-					<Badge variant="secondary">Vitalik</Badge>
+					<Badge variant="secondary">Coming soon</Badge>
 				</div>
 			</HeaderCardSection>
 

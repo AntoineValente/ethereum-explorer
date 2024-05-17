@@ -1,7 +1,7 @@
 "use client";
 
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon, X as XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -17,11 +17,13 @@ type Props = {
 	label: string;
 	date: Date | undefined;
 	setDate: (date: Date | undefined) => void;
+	onClear: VoidFunction;
 };
 
 export const DatePicker: React.FC<Props> = ({
 	date,
 	setDate,
+	onClear,
 	className,
 	label,
 }) => {
@@ -43,6 +45,16 @@ export const DatePicker: React.FC<Props> = ({
 						<span className="text-neutral-500 dark:text-neutral-400">
 							{label}
 						</span>
+					)}
+
+					{date && (
+						<XIcon
+							onClick={(e) => {
+								e.stopPropagation();
+								onClear();
+							}}
+							className="ml-auto h-4 w-4 text-white"
+						/>
 					)}
 				</Button>
 			</PopoverTrigger>

@@ -15,6 +15,7 @@ export async function GET(request: Request) {
 	const toBlock = searchParams.get("to_block");
 	const fromDate = searchParams.get("from_timestamp");
 	const toDate = searchParams.get("end_timestamp");
+	const page = searchParams.get("page");
 
 	const query = {
 		address,
@@ -24,9 +25,8 @@ export async function GET(request: Request) {
 		to_block: toBlock ?? undefined,
 		from_timestamp: fromDate ? +fromDate : undefined,
 		end_timestamp: toDate ? +toDate : undefined,
+		page: page ? +page : 1,
 	};
-
-	console.log({ query });
 
 	const data = await chainbaseSdk.get("/v1/account/txs", {
 		params: {
