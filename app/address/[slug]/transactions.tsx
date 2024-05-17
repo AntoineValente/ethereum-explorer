@@ -1,3 +1,5 @@
+"use client";
+
 import type { GetAccountTxsResponse200 } from "@/.api/apis/chainbase/types";
 import { Badge } from "@/components/ui/badge";
 import { DatePicker } from "@/components/ui/date-picker";
@@ -29,7 +31,7 @@ import {
 } from "@/lib/filter";
 import { format } from "date-fns";
 import { type FC, type PropsWithChildren, useEffect, useState } from "react";
-import type { AddressProps } from "../types";
+import type { AddressProps } from "./types";
 
 const TransactionBlockInput: FC<{
 	onEnter: (value: string) => void;
