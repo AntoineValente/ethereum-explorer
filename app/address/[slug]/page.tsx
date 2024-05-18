@@ -1,4 +1,5 @@
-import { ModeToggle } from "@/app/theme-toggle";
+import { GithubButton } from "@/components/github-button";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Skeleton } from "@/components/ui/skeleton";
 import { type FC, Suspense } from "react";
 import { Holdings } from "./holdings";
@@ -8,7 +9,7 @@ import type { AddressPageProps } from "./types";
 
 const HeaderSkeleton = <Skeleton className="flex-1 h-[260px]" />;
 
-const Page: FC<AddressPageProps> = ({ params: { slug: address } }) => {
+const Page: FC<AddressPageProps> = async ({ params: { slug: address } }) => {
 	return (
 		<div className="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-3 md:mx-auto flex flex-col space-y-4 py-8">
 			<div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center">
@@ -19,7 +20,10 @@ const Page: FC<AddressPageProps> = ({ params: { slug: address } }) => {
 					</p>
 				</div>
 
-				<ModeToggle />
+				<div className="flex space-x-2">
+					<GithubButton />
+					<ModeToggle />
+				</div>
 			</div>
 
 			<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">

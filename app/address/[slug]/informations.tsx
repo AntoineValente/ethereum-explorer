@@ -16,7 +16,8 @@ const getData = async (address: string) => {
 
 	return {
 		transactionsCount: transactionsResponse.data?.count,
-		lastTransactionHash: transactionsResponse.data?.data[0]?.transaction_hash,
+		lastTransactionHash:
+			transactionsResponse.data?.data?.[0]?.transaction_hash ?? "None",
 	};
 };
 
@@ -29,12 +30,6 @@ export const Informations: FC<Props> = async ({ address }) => {
 
 	return (
 		<HeaderCard title="Informations">
-			<HeaderCardSection title="Tags">
-				<div className="flex flex-row flex-wrap">
-					<Badge variant="secondary">Coming soon</Badge>
-				</div>
-			</HeaderCardSection>
-
 			<HeaderCardSection title="Last transaction sent">
 				<p className="truncate">{result.lastTransactionHash}</p>
 			</HeaderCardSection>

@@ -92,7 +92,7 @@ export const Transactions: FC<AddressProps> = ({ address }) => {
 	const [transactionsResponse, setTransactionsResponse] =
 		useState<GetAccountTxsResponse200 | null>(null);
 	const [error, setError] = useState<Record<string, string> | null>(null);
-
+	const isLoading = !transactionsResponse && !error;
 	const { filters, setFromBlock, setToBlock, setFromDate, setToDate, setPage } =
 		useFilters();
 
@@ -141,6 +141,8 @@ export const Transactions: FC<AddressProps> = ({ address }) => {
 				<span className="self-center pt-14">
 					An error occurred - <i>{error.message}</i>
 				</span>
+			) : !isLoading && !transactions.length ? (
+				<span className="self-center pt-14">No activity found</span>
 			) : (
 				<Table>
 					<TableHeader>
@@ -188,13 +190,13 @@ export const Transactions: FC<AddressProps> = ({ address }) => {
 				</Table>
 			)}
 
-			{transactionsResponse?.count && (
+			{transactionsResponse?.count ? (
 				<TransactionsPagination
 					count={transactionsResponse?.count}
 					currentPage={filters.page}
 					onPressPage={(page) => setPage(page)}
 				/>
-			)}
+			) : undefined}
 		</div>
 	);
 };
