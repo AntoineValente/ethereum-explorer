@@ -1,7 +1,7 @@
 import { ChainId, chainbaseSdk } from "@/api";
 import { Badge } from "@/components/ui/badge";
 import type { FC } from "react";
-import { HeaderCard, HeaderCardSection } from "./header-card";
+import { HeaderCard, HeaderCardSection } from "./HeaderCard";
 
 const getData = async (address: string) => {
 	const transactionsResponse = await chainbaseSdk.get("/v1/account/txs", {
@@ -25,7 +25,7 @@ type Props = {
 	address: string;
 };
 
-export const Informations: FC<Props> = async ({ address }) => {
+export const HeaderInformations: FC<Props> = async ({ address }) => {
 	const result = await getData(address);
 
 	return (

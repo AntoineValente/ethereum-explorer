@@ -7,5 +7,3 @@ export type AddressPageProps = {
 export type AddressProps = {
 	address: string;
 };
-
-export type ActivitySlug = "transactions" | "internal" | "erc20" | "nft";

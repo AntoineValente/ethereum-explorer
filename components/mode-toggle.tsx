@@ -2,7 +2,7 @@
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, FC } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +12,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function ModeToggle({ className }: ComponentProps<"div">) {
+export const ModeToggle: FC = ({ className }: ComponentProps<"div">) => {
 	const { setTheme } = useTheme();
 
 	return (
@@ -37,4 +37,4 @@ export function ModeToggle({ className }: ComponentProps<"div">) {
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
-}
+};

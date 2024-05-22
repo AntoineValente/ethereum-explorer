@@ -1,7 +1,8 @@
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import type { FC } from "react";
 import { Button } from "./ui/button";
 
-export function GithubButton() {
+export const GithubButton: FC = () => {
 	return (
 		<Button variant="outline" size="icon" asChild>
 			<a
@@ -13,4 +14,4 @@ export function GithubButton() {
 			</a>
 		</Button>
 	);
-}
+};

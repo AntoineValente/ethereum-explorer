@@ -4,7 +4,7 @@ import type { paths } from "./schema";
 
 const fetcher: typeof fetch = (...args) =>
 	retry(
-		async () => {
+		async (bail) => {
 			const res = await fetch(...args);
 
 			if (!res.ok) {
@@ -14,7 +14,7 @@ const fetcher: typeof fetch = (...args) =>
 			return res;
 		},
 		{
-			retries: 5,
+			forever: true,
 			minTimeout: 500,
 		},
 	);

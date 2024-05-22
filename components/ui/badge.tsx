@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/style";
 import { XIcon } from "lucide-react";
 
 const badgeVariants = cva(

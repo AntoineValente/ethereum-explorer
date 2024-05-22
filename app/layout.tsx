@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/style";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 	title: "Ethereum explorer",
 };
 
-export default function RootLayout({
+const RootLayout = ({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
+}>) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
@@ -35,4 +35,6 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;

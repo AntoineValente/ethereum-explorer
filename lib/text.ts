@@ -1,4 +1,4 @@
-export function createMiddleEllipsis(inputString: string): string {
+export const createMiddleEllipsis = (inputString: string): string => {
 	if (inputString.length <= 16) {
 		return inputString;
 	}
@@ -7,4 +7,4 @@ export function createMiddleEllipsis(inputString: string): string {
 	const lastEight = inputString.slice(-11);
 
 	return `${firstEight}...${lastEight}`;
-}
+};

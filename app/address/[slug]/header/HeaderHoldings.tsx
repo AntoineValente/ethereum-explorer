@@ -2,7 +2,7 @@ import { ChainId, chainbaseSdk } from "@/api";
 import { getAmountWithDecimals } from "@/lib/amount";
 
 import type { FC } from "react";
-import { HeaderCard, HeaderCardSection } from "./header-card";
+import { HeaderCard, HeaderCardSection } from "./HeaderCard";
 
 const getData = async (address: string) => {
 	const nativeBalanceResponse = await chainbaseSdk.get("/v1/account/balance", {
@@ -37,7 +37,7 @@ type Props = {
 	address: string;
 };
 
-export const Holdings: FC<Props> = async ({ address }) => {
+export const HeaderHoldings: FC<Props> = async ({ address }) => {
 	const result = await getData(address);
 
 	return (

@@ -1,5 +1,3 @@
-// /hooks/tailwind.ts
-
 import { create } from "@kodingdotninja/use-tailwind-breakpoint";
 import resolveConfig from "tailwindcss/resolveConfig";
 

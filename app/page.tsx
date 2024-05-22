@@ -13,10 +13,9 @@ const Page: FC = () => {
 
 	return (
 		<div
-			className="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto relative flex flex-col space-y-10 items-center justify-center h-screen"
+			className="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-8 md:mx-auto relative flex flex-col space-y-10 items-center justify-center h-screen"
 			style={{
-				backgroundImage:
-					"url(https://static.oklink.com/cdn/assets/imgs/238/3E2840A2F1322D40.png)",
+				backgroundImage: "url(background.png)",
 				backgroundPosition: "50%",
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "100% 100%",
