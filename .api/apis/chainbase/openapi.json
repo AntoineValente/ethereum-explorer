@@ -13,9 +13,7 @@
   "paths": {
     "/v1/block/number/latest": {
       "get": {
-        "tags": [
-          "Block"
-        ],
+        "tags": ["Block"],
         "summary": "Get latest block number",
         "description": "Get the latest block height of blockchain network.",
         "operationId": "GetBlockNumberLatest",
@@ -50,9 +48,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseGetLastBlockNumber",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -67,10 +63,7 @@
                     },
                     "data": {
                       "title": "GetLastBlockNumberData",
-                      "required": [
-                        "number",
-                        "hash"
-                      ],
+                      "required": ["number", "hash"],
                       "type": "object",
                       "properties": {
                         "number": {
@@ -94,10 +87,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -119,10 +109,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -144,10 +131,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -169,10 +153,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -194,10 +175,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -219,10 +197,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -243,9 +218,7 @@
     },
     "/v1/block/detail": {
       "get": {
-        "tags": [
-          "Block"
-        ],
+        "tags": ["Block"],
         "summary": "Get block by number",
         "description": "Get the detail of a block by the given block humber.",
         "operationId": "GetBlockDetail",
@@ -291,9 +264,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseGetBlockDetail",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -420,10 +391,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -445,10 +413,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -470,10 +435,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -495,10 +457,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -520,10 +479,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -545,10 +501,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -569,9 +522,7 @@
     },
     "/v1/tx/detail": {
       "get": {
-        "tags": [
-          "Transaction"
-        ],
+        "tags": ["Transaction"],
         "summary": "Get transaction",
         "description": "Get the detail of a transaction given the transaction hash.\n\nProvide the param \"hash\" or (\"block_number\" and \"tx_index\"). If both params are provided,\n\"hash\" will be used.",
         "operationId": "GetTxDetail",
@@ -640,9 +591,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseGetTxDetail",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -784,10 +733,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -809,10 +755,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -834,10 +777,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -859,10 +799,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -884,10 +821,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -909,10 +843,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -933,9 +864,7 @@
     },
     "/v1/account/txs": {
       "get": {
-        "tags": [
-          "Transaction"
-        ],
+        "tags": ["Transaction"],
         "summary": "Get transactions by account",
         "description": "Returns the transactions from the address.",
         "operationId": "GetAccountTxs",
@@ -1055,9 +984,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseGetAccountTxs",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1211,10 +1138,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1236,10 +1160,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1261,10 +1182,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1286,10 +1204,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1311,10 +1226,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1336,10 +1248,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1360,9 +1269,7 @@
     },
     "/v1/contract/events": {
       "get": {
-        "tags": [
-          "Events"
-        ],
+        "tags": ["Events"],
         "summary": "Get events by contract",
         "description": "Gets the list of events for the specified contract.",
         "operationId": "GetContractEvents",
@@ -1481,9 +1388,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseContractEvents",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1552,10 +1457,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1577,10 +1479,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1602,10 +1501,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1627,10 +1523,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1652,10 +1545,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1677,10 +1567,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1701,9 +1588,7 @@
     },
     "/v1/contract/call": {
       "post": {
-        "tags": [
-          "Contract"
-        ],
+        "tags": ["Contract"],
         "summary": "Contract call",
         "description": "Calls a specific function for the specified contract.",
         "operationId": "ContractCall",
@@ -1779,9 +1664,7 @@
               "application/json": {
                 "schema": {
                   "title": "ResponseContractCall",
-                  "required": [
-                    "data"
-                  ],
+                  "required": ["data"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1810,10 +1693,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1835,10 +1715,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1860,10 +1737,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1885,10 +1759,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1910,10 +1781,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -1935,10 +1803,7 @@
               "application/json": {
                 "schema": {
                   "title": "ErrorMessage",
-                  "required": [
-                    "code",
-                    "message"
-                  ],
+                  "required": ["code", "message"],
                   "type": "object",
                   "properties": {
                     "code": {
@@ -2144,10 +2009,7 @@
       },
       "ErrorMessage": {
         "title": "ErrorMessage",
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code", "message"],
         "type": "object",
         "properties": {
           "code": {
@@ -2162,10 +2024,7 @@
       },
       "GetLastBlockNumberData": {
         "title": "GetLastBlockNumberData",
-        "required": [
-          "number",
-          "hash"
-        ],
+        "required": ["number", "hash"],
         "type": "object",
         "properties": {
           "number": {
@@ -2180,9 +2039,7 @@
       },
       "ResponseContractCall": {
         "title": "ResponseContractCall",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {
@@ -2204,9 +2061,7 @@
       },
       "ResponseContractEvents": {
         "title": "ResponseContractEvents",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {
@@ -2268,9 +2123,7 @@
       },
       "ResponseGetAccountTxs": {
         "title": "ResponseGetAccountTxs",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {
@@ -2417,9 +2270,7 @@
       },
       "ResponseGetBlockDetail": {
         "title": "ResponseGetBlockDetail",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {
@@ -2539,9 +2390,7 @@
       },
       "ResponseGetLastBlockNumber": {
         "title": "ResponseGetLastBlockNumber",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {
@@ -2556,10 +2405,7 @@
           },
           "data": {
             "title": "GetLastBlockNumberData",
-            "required": [
-              "number",
-              "hash"
-            ],
+            "required": ["number", "hash"],
             "type": "object",
             "properties": {
               "number": {
@@ -2576,9 +2422,7 @@
       },
       "ResponseGetTxDetail": {
         "title": "ResponseGetTxDetail",
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object",
         "properties": {
           "code": {

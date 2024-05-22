@@ -1,9 +1,9 @@
 export type AddressPageProps = {
-	params: {
-		slug: string;
-	};
+  params: {
+    slug: string;
+  };
 };
 
 export type AddressProps = {
-	address: string;
+  address: string;
 };

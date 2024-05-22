@@ -1,10 +1,10 @@
 export const filtersToString = <T extends { [x: string]: unknown }>(
-	filters: T,
+  filters: T,
 ): string => {
-	const params = new URLSearchParams();
-	for (const [key, value] of Object.entries(filters) as [string, string][]) {
-		if (value) params.append(key, value);
-	}
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(filters) as [string, string][]) {
+    if (value) params.append(key, value);
+  }
 
-	return params.toString();
+  return params.toString();
 };

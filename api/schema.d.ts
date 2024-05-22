@@ -3,7 +3,6 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
   "/v1/block/number/latest": {
     /**
@@ -208,17 +207,17 @@ export interface components {
       message?: string;
       /** Data */
       data: {
-          /** Block Number */
-          block_number: number;
-          /** Function */
-          function: string;
-          /** Method Id */
-          method_id: string;
-          /** Transaction Hash */
-          transaction_hash: string;
-          /** Transaction Index */
-          transaction_index: number;
-        }[];
+        /** Block Number */
+        block_number: number;
+        /** Function */
+        function: string;
+        /** Method Id */
+        method_id: string;
+        /** Transaction Hash */
+        transaction_hash: string;
+        /** Transaction Index */
+        transaction_index: number;
+      }[];
       /** Next Page */
       next_page?: number;
       /** Count */
@@ -238,51 +237,51 @@ export interface components {
       message?: string;
       /** Data */
       data: {
-          /** Type */
-          type: number;
-          /** Status */
-          status: number;
-          /** Block Number */
-          block_number: number;
-          /** Block Timestamp */
-          block_timestamp: string;
-          /** Transaction Hash */
-          transaction_hash: string;
-          /** Transaction Index */
-          transaction_index: number;
-          /** From Address */
-          from_address: string;
-          /** To Address */
-          to_address: string;
-          /** Value */
-          value: string;
-          /** Input */
-          input: string;
-          /** Nonce */
-          nonce: string;
-          /** Contract Address */
-          contract_address: string;
-          /** Gas */
-          gas: number;
-          /** Gas Price */
-          gas_price: number;
-          /** Gas Used */
-          gas_used: number;
-          /** Effective Gas Price */
-          effective_gas_price: number;
-          /** Cumulative Gas Used */
-          cumulative_gas_used: number;
-          /** Max Fee Per Gas */
-          max_fee_per_gas: number;
-          /** Max Priority Fee Per Gas */
-          max_priority_fee_per_gas: number;
-          /** Tx Fee */
-          tx_fee: number;
-          /** Saving Fee */
-          saving_fee: number;
-          /** Burnt Fee */
-          burnt_fee: number;
-        }[];
+        /** Type */
+        type: number;
+        /** Status */
+        status: number;
+        /** Block Number */
+        block_number: number;
+        /** Block Timestamp */
+        block_timestamp: string;
+        /** Transaction Hash */
+        transaction_hash: string;
+        /** Transaction Index */
+        transaction_index: number;
+        /** From Address */
+        from_address: string;
+        /** To Address */
+        to_address: string;
+        /** Value */
+        value: string;
+        /** Input */
+        input: string;
+        /** Nonce */
+        nonce: string;
+        /** Contract Address */
+        contract_address: string;
+        /** Gas */
+        gas: number;
+        /** Gas Price */
+        gas_price: number;
+        /** Gas Used */
+        gas_used: number;
+        /** Effective Gas Price */
+        effective_gas_price: number;
+        /** Cumulative Gas Used */
+        cumulative_gas_used: number;
+        /** Max Fee Per Gas */
+        max_fee_per_gas: number;
+        /** Max Priority Fee Per Gas */
+        max_priority_fee_per_gas: number;
+        /** Tx Fee */
+        tx_fee: number;
+        /** Saving Fee */
+        saving_fee: number;
+        /** Burnt Fee */
+        burnt_fee: number;
+      }[];
       /** Next Page */
       next_page?: number;
       /** Count */
@@ -489,68 +488,68 @@ export interface components {
       type: "liquidity" | "farming" | "locked" | "lending" | "deposit";
       /** Assets Deposited */
       assets_deposited: {
-          /** DeFiAsset */
-          asset: {
-            /** Id */
-            id: string;
-            /** Logo Url */
-            logo_url?: string;
-            /**
-             * Name
-             * @default
-             */
-            name?: string;
-            /**
-             * Symbol
-             * @default
-             */
-            symbol?: string;
-            /**
-             * Type
-             * @default
-             */
-            type?: string;
-          };
-          /** Amount */
-          amount: number;
+        /** DeFiAsset */
+        asset: {
+          /** Id */
+          id: string;
+          /** Logo Url */
+          logo_url?: string;
           /**
-           * Usd Value
-           * @default 0
+           * Name
+           * @default
            */
-          usd_value?: number;
-        }[];
+          name?: string;
+          /**
+           * Symbol
+           * @default
+           */
+          symbol?: string;
+          /**
+           * Type
+           * @default
+           */
+          type?: string;
+        };
+        /** Amount */
+        amount: number;
+        /**
+         * Usd Value
+         * @default 0
+         */
+        usd_value?: number;
+      }[];
       /** Assets Rewarded */
       assets_rewarded?: {
-          /** DeFiAsset */
-          asset: {
-            /** Id */
-            id: string;
-            /** Logo Url */
-            logo_url?: string;
-            /**
-             * Name
-             * @default
-             */
-            name?: string;
-            /**
-             * Symbol
-             * @default
-             */
-            symbol?: string;
-            /**
-             * Type
-             * @default
-             */
-            type?: string;
-          };
-          /** Amount */
-          amount: number;
+        /** DeFiAsset */
+        asset: {
+          /** Id */
+          id: string;
+          /** Logo Url */
+          logo_url?: string;
           /**
-           * Usd Value
-           * @default 0
+           * Name
+           * @default
            */
-          usd_value?: number;
-        }[];
+          name?: string;
+          /**
+           * Symbol
+           * @default
+           */
+          symbol?: string;
+          /**
+           * Type
+           * @default
+           */
+          type?: string;
+        };
+        /** Amount */
+        amount: number;
+        /**
+         * Usd Value
+         * @default 0
+         */
+        usd_value?: number;
+      }[];
       /**
        * Stats
        * @default {
@@ -699,22 +698,22 @@ export interface components {
        * @description List of floor prices.
        */
       floor_prices?: {
-          /**
-           * Value
-           * @description The ammount of the ERC-20 token.
-           */
-          value?: string;
-          /**
-           * Symbol
-           * @description The symbol of the ERC-20 token.
-           */
-          symbol?: string;
-          /**
-           * Address
-           * @description The address of the ERC-20 token.
-           */
-          address?: string;
-        }[];
+        /**
+         * Value
+         * @description The ammount of the ERC-20 token.
+         */
+        value?: string;
+        /**
+         * Symbol
+         * @description The symbol of the ERC-20 token.
+         */
+        symbol?: string;
+        /**
+         * Address
+         * @description The address of the ERC-20 token.
+         */
+        address?: string;
+      }[];
     };
     /** Pool */
     Pool: {
@@ -777,7 +776,126 @@ export interface components {
       /** Logo Url */
       logo_url?: string;
       /** Portfolios */
-      portfolios: ({
+      portfolios: {
+        /** Pool */
+        pool: {
+          /** Address */
+          address: string;
+          /**
+           * Created At
+           * Format: date-time
+           */
+          created_at: string;
+        };
+        /**
+         * DeFiType
+         * @description An enumeration.
+         * @enum {string}
+         */
+        type: "liquidity" | "farming" | "locked" | "lending" | "deposit";
+        /** Assets Deposited */
+        assets_deposited: {
+          /** DeFiAsset */
+          asset: {
+            /** Id */
+            id: string;
+            /** Logo Url */
+            logo_url?: string;
+            /**
+             * Name
+             * @default
+             */
+            name?: string;
+            /**
+             * Symbol
+             * @default
+             */
+            symbol?: string;
+            /**
+             * Type
+             * @default
+             */
+            type?: string;
+          };
+          /** Amount */
+          amount: number;
+          /**
+           * Usd Value
+           * @default 0
+           */
+          usd_value?: number;
+        }[];
+        /** Assets Rewarded */
+        assets_rewarded?: {
+          /** DeFiAsset */
+          asset: {
+            /** Id */
+            id: string;
+            /** Logo Url */
+            logo_url?: string;
+            /**
+             * Name
+             * @default
+             */
+            name?: string;
+            /**
+             * Symbol
+             * @default
+             */
+            symbol?: string;
+            /**
+             * Type
+             * @default
+             */
+            type?: string;
+          };
+          /** Amount */
+          amount: number;
+          /**
+           * Usd Value
+           * @default 0
+           */
+          usd_value?: number;
+        }[];
+        /**
+         * Stats
+         * @default {
+         *   "usd_value": 0
+         * }
+         */
+        stats?: {
+          /**
+           * Usd Value
+           * @default 0
+           */
+          usd_value?: number;
+        };
+      }[];
+    };
+    /** ResponseAccountPortfolios */
+    ResponseAccountPortfolios: {
+      /**
+       * Code
+       * @default 0
+       */
+      code?: number;
+      /**
+       * Message
+       * @default ok
+       */
+      message?: string;
+      /** Data */
+      data: {
+        /** Id */
+        id: string;
+        /** Name */
+        name: string;
+        /** Blockchain */
+        blockchain: string;
+        /** Logo Url */
+        logo_url?: string;
+        /** Portfolios */
+        portfolios: {
           /** Pool */
           pool: {
             /** Address */
@@ -796,68 +914,68 @@ export interface components {
           type: "liquidity" | "farming" | "locked" | "lending" | "deposit";
           /** Assets Deposited */
           assets_deposited: {
-              /** DeFiAsset */
-              asset: {
-                /** Id */
-                id: string;
-                /** Logo Url */
-                logo_url?: string;
-                /**
-                 * Name
-                 * @default
-                 */
-                name?: string;
-                /**
-                 * Symbol
-                 * @default
-                 */
-                symbol?: string;
-                /**
-                 * Type
-                 * @default
-                 */
-                type?: string;
-              };
-              /** Amount */
-              amount: number;
+            /** DeFiAsset */
+            asset: {
+              /** Id */
+              id: string;
+              /** Logo Url */
+              logo_url?: string;
               /**
-               * Usd Value
-               * @default 0
+               * Name
+               * @default
                */
-              usd_value?: number;
-            }[];
+              name?: string;
+              /**
+               * Symbol
+               * @default
+               */
+              symbol?: string;
+              /**
+               * Type
+               * @default
+               */
+              type?: string;
+            };
+            /** Amount */
+            amount: number;
+            /**
+             * Usd Value
+             * @default 0
+             */
+            usd_value?: number;
+          }[];
           /** Assets Rewarded */
           assets_rewarded?: {
-              /** DeFiAsset */
-              asset: {
-                /** Id */
-                id: string;
-                /** Logo Url */
-                logo_url?: string;
-                /**
-                 * Name
-                 * @default
-                 */
-                name?: string;
-                /**
-                 * Symbol
-                 * @default
-                 */
-                symbol?: string;
-                /**
-                 * Type
-                 * @default
-                 */
-                type?: string;
-              };
-              /** Amount */
-              amount: number;
+            /** DeFiAsset */
+            asset: {
+              /** Id */
+              id: string;
+              /** Logo Url */
+              logo_url?: string;
               /**
-               * Usd Value
-               * @default 0
+               * Name
+               * @default
                */
-              usd_value?: number;
-            }[];
+              name?: string;
+              /**
+               * Symbol
+               * @default
+               */
+              symbol?: string;
+              /**
+               * Type
+               * @default
+               */
+              type?: string;
+            };
+            /** Amount */
+            amount: number;
+            /**
+             * Usd Value
+             * @default 0
+             */
+            usd_value?: number;
+          }[];
           /**
            * Stats
            * @default {
@@ -871,127 +989,8 @@ export interface components {
              */
             usd_value?: number;
           };
-        })[];
-    };
-    /** ResponseAccountPortfolios */
-    ResponseAccountPortfolios: {
-      /**
-       * Code
-       * @default 0
-       */
-      code?: number;
-      /**
-       * Message
-       * @default ok
-       */
-      message?: string;
-      /** Data */
-      data: ({
-          /** Id */
-          id: string;
-          /** Name */
-          name: string;
-          /** Blockchain */
-          blockchain: string;
-          /** Logo Url */
-          logo_url?: string;
-          /** Portfolios */
-          portfolios: ({
-              /** Pool */
-              pool: {
-                /** Address */
-                address: string;
-                /**
-                 * Created At
-                 * Format: date-time
-                 */
-                created_at: string;
-              };
-              /**
-               * DeFiType
-               * @description An enumeration.
-               * @enum {string}
-               */
-              type: "liquidity" | "farming" | "locked" | "lending" | "deposit";
-              /** Assets Deposited */
-              assets_deposited: {
-                  /** DeFiAsset */
-                  asset: {
-                    /** Id */
-                    id: string;
-                    /** Logo Url */
-                    logo_url?: string;
-                    /**
-                     * Name
-                     * @default
-                     */
-                    name?: string;
-                    /**
-                     * Symbol
-                     * @default
-                     */
-                    symbol?: string;
-                    /**
-                     * Type
-                     * @default
-                     */
-                    type?: string;
-                  };
-                  /** Amount */
-                  amount: number;
-                  /**
-                   * Usd Value
-                   * @default 0
-                   */
-                  usd_value?: number;
-                }[];
-              /** Assets Rewarded */
-              assets_rewarded?: {
-                  /** DeFiAsset */
-                  asset: {
-                    /** Id */
-                    id: string;
-                    /** Logo Url */
-                    logo_url?: string;
-                    /**
-                     * Name
-                     * @default
-                     */
-                    name?: string;
-                    /**
-                     * Symbol
-                     * @default
-                     */
-                    symbol?: string;
-                    /**
-                     * Type
-                     * @default
-                     */
-                    type?: string;
-                  };
-                  /** Amount */
-                  amount: number;
-                  /**
-                   * Usd Value
-                   * @default 0
-                   */
-                  usd_value?: number;
-                }[];
-              /**
-               * Stats
-               * @default {
-               *   "usd_value": 0
-               * }
-               */
-              stats?: {
-                /**
-                 * Usd Value
-                 * @default 0
-                 */
-                usd_value?: number;
-              };
-            })[];
-        })[];
+        }[];
+      }[];
     };
     /** ResponseGetAccountNFTs */
     ResponseGetAccountNFTs: {
@@ -1007,109 +1006,109 @@ export interface components {
       message?: string;
       /** Data */
       data?: {
+        /**
+         * Contract Address
+         * @description The contract address
+         */
+        contract_address: string;
+        /**
+         * Erc Type
+         * @description ERC standard related to the contract.
+         */
+        erc_type: string;
+        /**
+         * Metadata
+         * @description The metadata of the item.
+         */
+        metadata?: Record<string, never>;
+        /**
+         * Mint Time
+         * Format: date-time
+         * @description The timestamp when the item was minted.
+         */
+        mint_time: string;
+        /**
+         * Mint Transaction Hash
+         * @description The block number when the item was minted.
+         */
+        mint_transaction_hash: string;
+        /**
+         * Name
+         * @description The name of the item.
+         */
+        name: string;
+        /**
+         * Owner
+         * @description The user address who owns the item now (null if the item is an ERC-1155 NFT).
+         */
+        owner: string;
+        /**
+         * Symbol
+         * @description The symbol of the NFT contract.
+         */
+        symbol: string;
+        /**
+         * Token Id
+         * @description The token ID number of the item.
+         */
+        token_id: string;
+        /**
+         * Token Uri
+         * @description The token URI of the item.
+         */
+        token_uri: string;
+        /**
+         * Image Uri
+         * @description The image URI of the item.
+         */
+        image_uri: string;
+        /**
+         * Total
+         * @description The total amount of the item.
+         */
+        total: number;
+        /**
+         * Total String
+         * @description The total amount of item in string.
+         */
+        total_string: string;
+        /**
+         * Traits
+         * @description List of traits of the item.
+         */
+        traits?: unknown;
+        /**
+         * Rarity Score
+         * @description The rarity score for the item.
+         */
+        rarity_score?: number;
+        /**
+         * Rarity Rank
+         * @description The rarity rank for the item.
+         */
+        rarity_rank?: number;
+        /**
+         * Floor Prices
+         * @description List of floor prices.
+         */
+        floor_prices?: {
           /**
-           * Contract Address
-           * @description The contract address
+           * Value
+           * @description The ammount of the ERC-20 token.
            */
-          contract_address: string;
-          /**
-           * Erc Type
-           * @description ERC standard related to the contract.
-           */
-          erc_type: string;
-          /**
-           * Metadata
-           * @description The metadata of the item.
-           */
-          metadata?: Record<string, never>;
-          /**
-           * Mint Time
-           * Format: date-time
-           * @description The timestamp when the item was minted.
-           */
-          mint_time: string;
-          /**
-           * Mint Transaction Hash
-           * @description The block number when the item was minted.
-           */
-          mint_transaction_hash: string;
-          /**
-           * Name
-           * @description The name of the item.
-           */
-          name: string;
-          /**
-           * Owner
-           * @description The user address who owns the item now (null if the item is an ERC-1155 NFT).
-           */
-          owner: string;
+          value?: string;
           /**
            * Symbol
-           * @description The symbol of the NFT contract.
+           * @description The symbol of the ERC-20 token.
            */
-          symbol: string;
+          symbol?: string;
           /**
-           * Token Id
-           * @description The token ID number of the item.
+           * Address
+           * @description The address of the ERC-20 token.
            */
-          token_id: string;
-          /**
-           * Token Uri
-           * @description The token URI of the item.
-           */
-          token_uri: string;
-          /**
-           * Image Uri
-           * @description The image URI of the item.
-           */
-          image_uri: string;
-          /**
-           * Total
-           * @description The total amount of the item.
-           */
-          total: number;
-          /**
-           * Total String
-           * @description The total amount of item in string.
-           */
-          total_string: string;
-          /**
-           * Traits
-           * @description List of traits of the item.
-           */
-          traits?: unknown;
-          /**
-           * Rarity Score
-           * @description The rarity score for the item.
-           */
-          rarity_score?: number;
-          /**
-           * Rarity Rank
-           * @description The rarity rank for the item.
-           */
-          rarity_rank?: number;
-          /**
-           * Floor Prices
-           * @description List of floor prices.
-           */
-          floor_prices?: {
-              /**
-               * Value
-               * @description The ammount of the ERC-20 token.
-               */
-              value?: string;
-              /**
-               * Symbol
-               * @description The symbol of the ERC-20 token.
-               */
-              symbol?: string;
-              /**
-               * Address
-               * @description The address of the ERC-20 token.
-               */
-              address?: string;
-            }[];
+          address?: string;
         }[];
+      }[];
       /** Next Page */
       next_page?: number;
       /** Count */
@@ -1129,74 +1128,74 @@ export interface components {
       message?: string;
       /** Data */
       data?: {
+        /**
+         * Contract Address
+         * @description ERC-20 contract address.
+         */
+        contract_address: string;
+        /**
+         * Decimals
+         * @description The number of decimals the token uses.
+         */
+        decimals: number;
+        /**
+         * Name
+         * @description The name of the ERC-20 token.
+         */
+        name: string;
+        /**
+         * Symbol
+         * @description The symbol of the ERC-20 token.
+         */
+        symbol: string;
+        /**
+         * Logos
+         * @description List of logo images for the ERC-20 token.
+         */
+        logos?: {
           /**
-           * Contract Address
-           * @description ERC-20 contract address.
+           * Uri
+           * @description URI for the logo image.
            */
-          contract_address: string;
+          uri: string;
           /**
-           * Decimals
-           * @description The number of decimals the token uses.
+           * Width
+           * @description The logo image's approximate width in pixels.
            */
-          decimals: number;
+          width: number;
+          /**
+           * Height
+           * @description The logo image's approximate height in pixels.
+           */
+          height: number;
+        }[];
+        /**
+         * Urls
+         * @description List of urls for the ERC-20 token.
+         */
+        urls?: {
           /**
            * Name
-           * @description The name of the ERC-20 token.
+           * @description The name of the link.
            */
           name: string;
           /**
-           * Symbol
-           * @description The symbol of the ERC-20 token.
+           * Url
+           * @description The URL of the link.
            */
-          symbol: string;
-          /**
-           * Logos
-           * @description List of logo images for the ERC-20 token.
-           */
-          logos?: {
-              /**
-               * Uri
-               * @description URI for the logo image.
-               */
-              uri: string;
-              /**
-               * Width
-               * @description The logo image's approximate width in pixels.
-               */
-              width: number;
-              /**
-               * Height
-               * @description The logo image's approximate height in pixels.
-               */
-              height: number;
-            }[];
-          /**
-           * Urls
-           * @description List of urls for the ERC-20 token.
-           */
-          urls?: {
-              /**
-               * Name
-               * @description The name of the link.
-               */
-              name: string;
-              /**
-               * Url
-               * @description The URL of the link.
-               */
-              url: string;
-            }[];
-          /**
-           * Current Usd Price
-           * @description The current price of the ERC-20 token in USD.
-           */
-          current_usd_price?: number;
-          /**
-           * Balance
-           * @description The balance of the ERC-20 token for a given wallet.
-           */
-          balance: string;
+          url: string;
         }[];
+        /**
+         * Current Usd Price
+         * @description The current price of the ERC-20 token in USD.
+         */
+        current_usd_price?: number;
+        /**
+         * Balance
+         * @description The balance of the ERC-20 token for a given wallet.
+         */
+        balance: string;
+      }[];
       /** Next Page */
       next_page?: number;
       /** Count */
@@ -1244,38 +1243,38 @@ export interface components {
        * @description List of logo images for the ERC-20 token.
        */
       logos?: {
-          /**
-           * Uri
-           * @description URI for the logo image.
-           */
-          uri: string;
-          /**
-           * Width
-           * @description The logo image's approximate width in pixels.
-           */
-          width: number;
-          /**
-           * Height
-           * @description The logo image's approximate height in pixels.
-           */
-          height: number;
-        }[];
+        /**
+         * Uri
+         * @description URI for the logo image.
+         */
+        uri: string;
+        /**
+         * Width
+         * @description The logo image's approximate width in pixels.
+         */
+        width: number;
+        /**
+         * Height
+         * @description The logo image's approximate height in pixels.
+         */
+        height: number;
+      }[];
       /**
        * Urls
        * @description List of urls for the ERC-20 token.
        */
       urls?: {
-          /**
-           * Name
-           * @description The name of the link.
-           */
-          name: string;
-          /**
-           * Url
-           * @description The URL of the link.
-           */
-          url: string;
-        }[];
+        /**
+         * Name
+         * @description The name of the link.
+         */
+        name: string;
+        /**
+         * Url
+         * @description The URL of the link.
+         */
+        url: string;
+      }[];
       /**
        * Current Usd Price
        * @description The current price of the ERC-20 token in USD.
@@ -1331,7 +1330,6 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
   /**
    * Get latest block number
    * @description Get the latest block height of blockchain network.
@@ -1800,51 +1798,51 @@ export interface operations {
             message?: string;
             /** Data */
             data: {
-                /** Type */
-                type: number;
-                /** Status */
-                status: number;
-                /** Block Number */
-                block_number: number;
-                /** Block Timestamp */
-                block_timestamp: string;
-                /** Transaction Hash */
-                transaction_hash: string;
-                /** Transaction Index */
-                transaction_index: number;
-                /** From Address */
-                from_address: string;
-                /** To Address */
-                to_address: string;
-                /** Value */
-                value: string;
-                /** Input */
-                input: string;
-                /** Nonce */
-                nonce: string;
-                /** Contract Address */
-                contract_address: string;
-                /** Gas */
-                gas: number;
-                /** Gas Price */
-                gas_price: number;
-                /** Gas Used */
-                gas_used: number;
-                /** Effective Gas Price */
-                effective_gas_price: number;
-                /** Cumulative Gas Used */
-                cumulative_gas_used: number;
-                /** Max Fee Per Gas */
-                max_fee_per_gas: number;
-                /** Max Priority Fee Per Gas */
-                max_priority_fee_per_gas: number;
-                /** Tx Fee */
-                tx_fee: number;
-                /** Saving Fee */
-                saving_fee: number;
-                /** Burnt Fee */
-                burnt_fee: number;
-              }[];
+              /** Type */
+              type: number;
+              /** Status */
+              status: number;
+              /** Block Number */
+              block_number: number;
+              /** Block Timestamp */
+              block_timestamp: string;
+              /** Transaction Hash */
+              transaction_hash: string;
+              /** Transaction Index */
+              transaction_index: number;
+              /** From Address */
+              from_address: string;
+              /** To Address */
+              to_address: string;
+              /** Value */
+              value: string;
+              /** Input */
+              input: string;
+              /** Nonce */
+              nonce: string;
+              /** Contract Address */
+              contract_address: string;
+              /** Gas */
+              gas: number;
+              /** Gas Price */
+              gas_price: number;
+              /** Gas Used */
+              gas_used: number;
+              /** Effective Gas Price */
+              effective_gas_price: number;
+              /** Cumulative Gas Used */
+              cumulative_gas_used: number;
+              /** Max Fee Per Gas */
+              max_fee_per_gas: number;
+              /** Max Priority Fee Per Gas */
+              max_priority_fee_per_gas: number;
+              /** Tx Fee */
+              tx_fee: number;
+              /** Saving Fee */
+              saving_fee: number;
+              /** Burnt Fee */
+              burnt_fee: number;
+            }[];
             /** Next Page */
             next_page?: number;
             /** Count */
@@ -1970,17 +1968,17 @@ export interface operations {
             message?: string;
             /** Data */
             data: {
-                /** Block Number */
-                block_number: number;
-                /** Function */
-                function: string;
-                /** Method Id */
-                method_id: string;
-                /** Transaction Hash */
-                transaction_hash: string;
-                /** Transaction Index */
-                transaction_index: number;
-              }[];
+              /** Block Number */
+              block_number: number;
+              /** Function */
+              function: string;
+              /** Method Id */
+              method_id: string;
+              /** Transaction Hash */
+              transaction_hash: string;
+              /** Transaction Index */
+              transaction_index: number;
+            }[];
             /** Next Page */
             next_page?: number;
             /** Count */
@@ -2332,74 +2330,74 @@ export interface operations {
             message?: string;
             /** Data */
             data?: {
+              /**
+               * Contract Address
+               * @description ERC-20 contract address.
+               */
+              contract_address: string;
+              /**
+               * Decimals
+               * @description The number of decimals the token uses.
+               */
+              decimals: number;
+              /**
+               * Name
+               * @description The name of the ERC-20 token.
+               */
+              name: string;
+              /**
+               * Symbol
+               * @description The symbol of the ERC-20 token.
+               */
+              symbol: string;
+              /**
+               * Logos
+               * @description List of logo images for the ERC-20 token.
+               */
+              logos?: {
                 /**
-                 * Contract Address
-                 * @description ERC-20 contract address.
+                 * Uri
+                 * @description URI for the logo image.
                  */
-                contract_address: string;
+                uri: string;
                 /**
-                 * Decimals
-                 * @description The number of decimals the token uses.
+                 * Width
+                 * @description The logo image's approximate width in pixels.
                  */
-                decimals: number;
+                width: number;
+                /**
+                 * Height
+                 * @description The logo image's approximate height in pixels.
+                 */
+                height: number;
+              }[];
+              /**
+               * Urls
+               * @description List of urls for the ERC-20 token.
+               */
+              urls?: {
                 /**
                  * Name
-                 * @description The name of the ERC-20 token.
+                 * @description The name of the link.
                  */
                 name: string;
                 /**
-                 * Symbol
-                 * @description The symbol of the ERC-20 token.
+                 * Url
+                 * @description The URL of the link.
                  */
-                symbol: string;
-                /**
-                 * Logos
-                 * @description List of logo images for the ERC-20 token.
-                 */
-                logos?: {
-                    /**
-                     * Uri
-                     * @description URI for the logo image.
-                     */
-                    uri: string;
-                    /**
-                     * Width
-                     * @description The logo image's approximate width in pixels.
-                     */
-                    width: number;
-                    /**
-                     * Height
-                     * @description The logo image's approximate height in pixels.
-                     */
-                    height: number;
-                  }[];
-                /**
-                 * Urls
-                 * @description List of urls for the ERC-20 token.
-                 */
-                urls?: {
-                    /**
-                     * Name
-                     * @description The name of the link.
-                     */
-                    name: string;
-                    /**
-                     * Url
-                     * @description The URL of the link.
-                     */
-                    url: string;
-                  }[];
-                /**
-                 * Current Usd Price
-                 * @description The current price of the ERC-20 token in USD.
-                 */
-                current_usd_price?: number;
-                /**
-                 * Balance
-                 * @description The balance of the ERC-20 token for a given wallet.
-                 */
-                balance: string;
+                url: string;
               }[];
+              /**
+               * Current Usd Price
+               * @description The current price of the ERC-20 token in USD.
+               */
+              current_usd_price?: number;
+              /**
+               * Balance
+               * @description The balance of the ERC-20 token for a given wallet.
+               */
+              balance: string;
+            }[];
             /** Next Page */
             next_page?: number;
             /** Count */
@@ -2507,112 +2505,117 @@ export interface operations {
              */
             message?: string;
             /** Data */
-            data: ({
-                /** Id */
-                id: string;
-                /** Name */
-                name: string;
-                /** Blockchain */
-                blockchain: string;
-                /** Logo Url */
-                logo_url?: string;
-                /** Portfolios */
-                portfolios: ({
-                    /** Pool */
-                    pool: {
-                      /** Address */
-                      address: string;
-                      /**
-                       * Created At
-                       * Format: date-time
-                       */
-                      created_at: string;
-                    };
+            data: {
+              /** Id */
+              id: string;
+              /** Name */
+              name: string;
+              /** Blockchain */
+              blockchain: string;
+              /** Logo Url */
+              logo_url?: string;
+              /** Portfolios */
+              portfolios: {
+                /** Pool */
+                pool: {
+                  /** Address */
+                  address: string;
+                  /**
+                   * Created At
+                   * Format: date-time
+                   */
+                  created_at: string;
+                };
+                /**
+                 * DeFiType
+                 * @description An enumeration.
+                 * @enum {string}
+                 */
+                type:
+                  | "liquidity"
+                  | "farming"
+                  | "locked"
+                  | "lending"
+                  | "deposit";
+                /** Assets Deposited */
+                assets_deposited: {
+                  /** DeFiAsset */
+                  asset: {
+                    /** Id */
+                    id: string;
+                    /** Logo Url */
+                    logo_url?: string;
                     /**
-                     * DeFiType
-                     * @description An enumeration.
-                     * @enum {string}
+                     * Name
+                     * @default
                      */
-                    type: "liquidity" | "farming" | "locked" | "lending" | "deposit";
-                    /** Assets Deposited */
-                    assets_deposited: {
-                        /** DeFiAsset */
-                        asset: {
-                          /** Id */
-                          id: string;
-                          /** Logo Url */
-                          logo_url?: string;
-                          /**
-                           * Name
-                           * @default
-                           */
-                          name?: string;
-                          /**
-                           * Symbol
-                           * @default
-                           */
-                          symbol?: string;
-                          /**
-                           * Type
-                           * @default
-                           */
-                          type?: string;
-                        };
-                        /** Amount */
-                        amount: number;
-                        /**
-                         * Usd Value
-                         * @default 0
-                         */
-                        usd_value?: number;
-                      }[];
-                    /** Assets Rewarded */
-                    assets_rewarded?: {
-                        /** DeFiAsset */
-                        asset: {
-                          /** Id */
-                          id: string;
-                          /** Logo Url */
-                          logo_url?: string;
-                          /**
-                           * Name
-                           * @default
-                           */
-                          name?: string;
-                          /**
-                           * Symbol
-                           * @default
-                           */
-                          symbol?: string;
-                          /**
-                           * Type
-                           * @default
-                           */
-                          type?: string;
-                        };
-                        /** Amount */
-                        amount: number;
-                        /**
-                         * Usd Value
-                         * @default 0
-                         */
-                        usd_value?: number;
-                      }[];
+                    name?: string;
                     /**
-                     * Stats
-                     * @default {
-                     *   "usd_value": 0
-                     * }
+                     * Symbol
+                     * @default
                      */
-                    stats?: {
-                      /**
-                       * Usd Value
-                       * @default 0
-                       */
-                      usd_value?: number;
-                    };
-                  })[];
-              })[];
+                    symbol?: string;
+                    /**
+                     * Type
+                     * @default
+                     */
+                    type?: string;
+                  };
+                  /** Amount */
+                  amount: number;
+                  /**
+                   * Usd Value
+                   * @default 0
+                   */
+                  usd_value?: number;
+                }[];
+                /** Assets Rewarded */
+                assets_rewarded?: {
+                  /** DeFiAsset */
+                  asset: {
+                    /** Id */
+                    id: string;
+                    /** Logo Url */
+                    logo_url?: string;
+                    /**
+                     * Name
+                     * @default
+                     */
+                    name?: string;
+                    /**
+                     * Symbol
+                     * @default
+                     */
+                    symbol?: string;
+                    /**
+                     * Type
+                     * @default
+                     */
+                    type?: string;
+                  };
+                  /** Amount */
+                  amount: number;
+                  /**
+                   * Usd Value
+                   * @default 0
+                   */
+                  usd_value?: number;
+                }[];
+                /**
+                 * Stats
+                 * @default {
+                 *   "usd_value": 0
+                 * }
+                 */
+                stats?: {
+                  /**
+                   * Usd Value
+                   * @default 0
+                   */
+                  usd_value?: number;
+                };
+              }[];
+            }[];
           };
         };
       };
@@ -2734,109 +2737,109 @@ export interface operations {
             message?: string;
             /** Data */
             data?: {
+              /**
+               * Contract Address
+               * @description The contract address
+               */
+              contract_address: string;
+              /**
+               * Erc Type
+               * @description ERC standard related to the contract.
+               */
+              erc_type: string;
+              /**
+               * Metadata
+               * @description The metadata of the item.
+               */
+              metadata?: Record<string, never>;
+              /**
+               * Mint Time
+               * Format: date-time
+               * @description The timestamp when the item was minted.
+               */
+              mint_time: string;
+              /**
+               * Mint Transaction Hash
+               * @description The block number when the item was minted.
+               */
+              mint_transaction_hash: string;
+              /**
+               * Name
+               * @description The name of the item.
+               */
+              name: string;
+              /**
+               * Owner
+               * @description The user address who owns the item now (null if the item is an ERC-1155 NFT).
+               */
+              owner: string;
+              /**
+               * Symbol
+               * @description The symbol of the NFT contract.
+               */
+              symbol: string;
+              /**
+               * Token Id
+               * @description The token ID number of the item.
+               */
+              token_id: string;
+              /**
+               * Token Uri
+               * @description The token URI of the item.
+               */
+              token_uri: string;
+              /**
+               * Image Uri
+               * @description The image URI of the item.
+               */
+              image_uri: string;
+              /**
+               * Total
+               * @description The total amount of the item.
+               */
+              total: number;
+              /**
+               * Total String
+               * @description The total amount of item in string.
+               */
+              total_string: string;
+              /**
+               * Traits
+               * @description List of traits of the item.
+               */
+              traits?: unknown;
+              /**
+               * Rarity Score
+               * @description The rarity score for the item.
+               */
+              rarity_score?: number;
+              /**
+               * Rarity Rank
+               * @description The rarity rank for the item.
+               */
+              rarity_rank?: number;
+              /**
+               * Floor Prices
+               * @description List of floor prices.
+               */
+              floor_prices?: {
                 /**
-                 * Contract Address
-                 * @description The contract address
+                 * Value
+                 * @description The ammount of the ERC-20 token.
                  */
-                contract_address: string;
-                /**
-                 * Erc Type
-                 * @description ERC standard related to the contract.
-                 */
-                erc_type: string;
-                /**
-                 * Metadata
-                 * @description The metadata of the item.
-                 */
-                metadata?: Record<string, never>;
-                /**
-                 * Mint Time
-                 * Format: date-time
-                 * @description The timestamp when the item was minted.
-                 */
-                mint_time: string;
-                /**
-                 * Mint Transaction Hash
-                 * @description The block number when the item was minted.
-                 */
-                mint_transaction_hash: string;
-                /**
-                 * Name
-                 * @description The name of the item.
-                 */
-                name: string;
-                /**
-                 * Owner
-                 * @description The user address who owns the item now (null if the item is an ERC-1155 NFT).
-                 */
-                owner: string;
+                value?: string;
                 /**
                  * Symbol
-                 * @description The symbol of the NFT contract.
+                 * @description The symbol of the ERC-20 token.
                  */
-                symbol: string;
+                symbol?: string;
                 /**
-                 * Token Id
-                 * @description The token ID number of the item.
+                 * Address
+                 * @description The address of the ERC-20 token.
                  */
-                token_id: string;
-                /**
-                 * Token Uri
-                 * @description The token URI of the item.
-                 */
-                token_uri: string;
-                /**
-                 * Image Uri
-                 * @description The image URI of the item.
-                 */
-                image_uri: string;
-                /**
-                 * Total
-                 * @description The total amount of the item.
-                 */
-                total: number;
-                /**
-                 * Total String
-                 * @description The total amount of item in string.
-                 */
-                total_string: string;
-                /**
-                 * Traits
-                 * @description List of traits of the item.
-                 */
-                traits?: unknown;
-                /**
-                 * Rarity Score
-                 * @description The rarity score for the item.
-                 */
-                rarity_score?: number;
-                /**
-                 * Rarity Rank
-                 * @description The rarity rank for the item.
-                 */
-                rarity_rank?: number;
-                /**
-                 * Floor Prices
-                 * @description List of floor prices.
-                 */
-                floor_prices?: {
-                    /**
-                     * Value
-                     * @description The ammount of the ERC-20 token.
-                     */
-                    value?: string;
-                    /**
-                     * Symbol
-                     * @description The symbol of the ERC-20 token.
-                     */
-                    symbol?: string;
-                    /**
-                     * Address
-                     * @description The address of the ERC-20 token.
-                     */
-                    address?: string;
-                  }[];
+                address?: string;
               }[];
+            }[];
             /** Next Page */
             next_page?: number;
             /** Count */

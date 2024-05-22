@@ -12,60 +12,60 @@ import { TransactionsTableSkeleton } from "./TransactionsTableSkeleton";
 import { useTransactions } from "./useTransactions";
 
 export const Transactions: FC<AddressProps> = ({ address }) => {
-	const { filters, setFromBlock, setToBlock, setFromDate, setToDate, setPage } =
-		useTransactionsFilters();
-	const transactionsState = useTransactions(address, filters);
+  const { filters, setFromBlock, setToBlock, setFromDate, setToDate, setPage } =
+    useTransactionsFilters();
+  const transactionsState = useTransactions(address, filters);
 
-	return (
-		<div className="flex flex-col space-y-4">
-			<TransactionsFilters
-				filters={filters}
-				setFromBlock={setFromBlock}
-				setToBlock={setToBlock}
-				setFromDate={setFromDate}
-				setToDate={setToDate}
-			/>
+  return (
+    <div className="flex flex-col space-y-4">
+      <TransactionsFilters
+        filters={filters}
+        setFromBlock={setFromBlock}
+        setToBlock={setToBlock}
+        setFromDate={setFromDate}
+        setToDate={setToDate}
+      />
 
-			{match(transactionsState)
-				.with({ status: "loading" }, { status: "idle" }, () => (
-					<TransactionsTableSkeleton />
-				))
-				.with({ status: "error", error: P.select() }, (error) => (
-					<TransactionsTableMessage>
-						An error occurred - <i>{error.message}</i>
-					</TransactionsTableMessage>
-				))
-				.with(
-					{ status: "success", transactionsResponse: P.select() },
-					(transactionsResponse) => {
-						const transactions = transactionsResponse.data;
+      {match(transactionsState)
+        .with({ status: "loading" }, { status: "idle" }, () => (
+          <TransactionsTableSkeleton />
+        ))
+        .with({ status: "error", error: P.select() }, (error) => (
+          <TransactionsTableMessage>
+            An error occurred - <i>{error.message}</i>
+          </TransactionsTableMessage>
+        ))
+        .with(
+          { status: "success", transactionsResponse: P.select() },
+          (transactionsResponse) => {
+            const transactions = transactionsResponse.data;
 
-						if (!transactions.length)
-							return (
-								<TransactionsTableMessage>
-									No activity found
-								</TransactionsTableMessage>
-							);
+            if (!transactions.length)
+              return (
+                <TransactionsTableMessage>
+                  No activity found
+                </TransactionsTableMessage>
+              );
 
-						return (
-							<>
-								<TransactionsTable
-									address={address}
-									transactions={transactions}
-								/>
+            return (
+              <>
+                <TransactionsTable
+                  address={address}
+                  transactions={transactions}
+                />
 
-								{transactionsResponse?.count ? (
-									<TransactionsPagination
-										count={transactionsResponse?.count}
-										currentPage={filters.page}
-										onPressPage={(page) => setPage(page)}
-									/>
-								) : undefined}
-							</>
-						);
-					},
-				)
-				.exhaustive()}
-		</div>
-	);
+                {transactionsResponse?.count ? (
+                  <TransactionsPagination
+                    count={transactionsResponse?.count}
+                    currentPage={filters.page}
+                    onPressPage={(page) => setPage(page)}
+                  />
+                ) : undefined}
+              </>
+            );
+          },
+        )
+        .exhaustive()}
+    </div>
+  );
 };

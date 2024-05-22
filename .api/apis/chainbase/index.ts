@@ -1,8 +1,8 @@
-import type * as types from './types';
-import type { ConfigOptions, FetchResponse } from 'api/dist/core'
-import Oas from 'oas';
-import APICore from 'api/dist/core';
-import definition from './openapi.json';
+import type * as types from "./types";
+import type { ConfigOptions, FetchResponse } from "api/dist/core";
+import Oas from "oas";
+import APICore from "api/dist/core";
+import definition from "./openapi.json";
 
 class SDK {
   spec: Oas;
@@ -10,7 +10,7 @@ class SDK {
 
   constructor() {
     this.spec = Oas.init(definition);
-    this.core = new APICore(this.spec, 'chainbase/v1.0.0 (api/6.1.1)');
+    this.core = new APICore(this.spec, "chainbase/v1.0.0 (api/6.1.1)");
   }
 
   /**
@@ -84,8 +84,10 @@ class SDK {
    * @throws FetchError<422, types.GetBlockNumberLatestResponse422> Unprocessable Entity
    * @throws FetchError<500, types.GetBlockNumberLatestResponse500> Internal Server Error
    */
-  getBlockNumberLatest(metadata: types.GetBlockNumberLatestMetadataParam): Promise<FetchResponse<200, types.GetBlockNumberLatestResponse200>> {
-    return this.core.fetch('/v1/block/number/latest', 'get', metadata);
+  getBlockNumberLatest(
+    metadata: types.GetBlockNumberLatestMetadataParam,
+  ): Promise<FetchResponse<200, types.GetBlockNumberLatestResponse200>> {
+    return this.core.fetch("/v1/block/number/latest", "get", metadata);
   }
 
   /**
@@ -99,8 +101,10 @@ class SDK {
    * @throws FetchError<422, types.GetBlockDetailResponse422> Unprocessable Entity
    * @throws FetchError<500, types.GetBlockDetailResponse500> Internal Server Error
    */
-  getBlockDetail(metadata: types.GetBlockDetailMetadataParam): Promise<FetchResponse<200, types.GetBlockDetailResponse200>> {
-    return this.core.fetch('/v1/block/detail', 'get', metadata);
+  getBlockDetail(
+    metadata: types.GetBlockDetailMetadataParam,
+  ): Promise<FetchResponse<200, types.GetBlockDetailResponse200>> {
+    return this.core.fetch("/v1/block/detail", "get", metadata);
   }
 
   /**
@@ -118,8 +122,10 @@ class SDK {
    * @throws FetchError<422, types.GetTxDetailResponse422> Unprocessable Entity
    * @throws FetchError<500, types.GetTxDetailResponse500> Internal Server Error
    */
-  getTxDetail(metadata: types.GetTxDetailMetadataParam): Promise<FetchResponse<200, types.GetTxDetailResponse200>> {
-    return this.core.fetch('/v1/tx/detail', 'get', metadata);
+  getTxDetail(
+    metadata: types.GetTxDetailMetadataParam,
+  ): Promise<FetchResponse<200, types.GetTxDetailResponse200>> {
+    return this.core.fetch("/v1/tx/detail", "get", metadata);
   }
 
   /**
@@ -133,8 +139,10 @@ class SDK {
    * @throws FetchError<422, types.GetAccountTxsResponse422> Unprocessable Entity
    * @throws FetchError<500, types.GetAccountTxsResponse500> Internal Server Error
    */
-  getAccountTxs(metadata: types.GetAccountTxsMetadataParam): Promise<FetchResponse<200, types.GetAccountTxsResponse200>> {
-    return this.core.fetch('/v1/account/txs', 'get', metadata);
+  getAccountTxs(
+    metadata: types.GetAccountTxsMetadataParam,
+  ): Promise<FetchResponse<200, types.GetAccountTxsResponse200>> {
+    return this.core.fetch("/v1/account/txs", "get", metadata);
   }
 
   /**
@@ -148,8 +156,10 @@ class SDK {
    * @throws FetchError<422, types.GetContractEventsResponse422> Unprocessable Entity
    * @throws FetchError<500, types.GetContractEventsResponse500> Internal Server Error
    */
-  getContractEvents(metadata: types.GetContractEventsMetadataParam): Promise<FetchResponse<200, types.GetContractEventsResponse200>> {
-    return this.core.fetch('/v1/contract/events', 'get', metadata);
+  getContractEvents(
+    metadata: types.GetContractEventsMetadataParam,
+  ): Promise<FetchResponse<200, types.GetContractEventsResponse200>> {
+    return this.core.fetch("/v1/contract/events", "get", metadata);
   }
 
   /**
@@ -163,14 +173,68 @@ class SDK {
    * @throws FetchError<422, types.ContractCallResponse422> Unprocessable Entity
    * @throws FetchError<500, types.ContractCallResponse500> Internal Server Error
    */
-  contractCall(body: types.ContractCallBodyParam, metadata: types.ContractCallMetadataParam): Promise<FetchResponse<200, types.ContractCallResponse200>> {
-    return this.core.fetch('/v1/contract/call', 'post', body, metadata);
+  contractCall(
+    body: types.ContractCallBodyParam,
+    metadata: types.ContractCallMetadataParam,
+  ): Promise<FetchResponse<200, types.ContractCallResponse200>> {
+    return this.core.fetch("/v1/contract/call", "post", body, metadata);
   }
 }
 
-const createSDK = (() => { return new SDK(); })()
-;
+const createSDK = (() => {
+  return new SDK();
+})();
 
 export default createSDK;
 
-export type { ContractCallBodyParam, ContractCallMetadataParam, ContractCallResponse200, ContractCallResponse400, ContractCallResponse401, ContractCallResponse403, ContractCallResponse404, ContractCallResponse422, ContractCallResponse500, GetAccountTxsMetadataParam, GetAccountTxsResponse200, GetAccountTxsResponse400, GetAccountTxsResponse401, GetAccountTxsResponse403, GetAccountTxsResponse404, GetAccountTxsResponse422, GetAccountTxsResponse500, GetBlockDetailMetadataParam, GetBlockDetailResponse200, GetBlockDetailResponse400, GetBlockDetailResponse401, GetBlockDetailResponse403, GetBlockDetailResponse404, GetBlockDetailResponse422, GetBlockDetailResponse500, GetBlockNumberLatestMetadataParam, GetBlockNumberLatestResponse200, GetBlockNumberLatestResponse400, GetBlockNumberLatestResponse401, GetBlockNumberLatestResponse403, GetBlockNumberLatestResponse404, GetBlockNumberLatestResponse422, GetBlockNumberLatestResponse500, GetContractEventsMetadataParam, GetContractEventsResponse200, GetContractEventsResponse400, GetContractEventsResponse401, GetContractEventsResponse403, GetContractEventsResponse404, GetContractEventsResponse422, GetContractEventsResponse500, GetTxDetailMetadataParam, GetTxDetailResponse200, GetTxDetailResponse400, GetTxDetailResponse401, GetTxDetailResponse403, GetTxDetailResponse404, GetTxDetailResponse422, GetTxDetailResponse500 } from './types';
+export type {
+  ContractCallBodyParam,
+  ContractCallMetadataParam,
+  ContractCallResponse200,
+  ContractCallResponse400,
+  ContractCallResponse401,
+  ContractCallResponse403,
+  ContractCallResponse404,
+  ContractCallResponse422,
+  ContractCallResponse500,
+  GetAccountTxsMetadataParam,
+  GetAccountTxsResponse200,
+  GetAccountTxsResponse400,
+  GetAccountTxsResponse401,
+  GetAccountTxsResponse403,
+  GetAccountTxsResponse404,
+  GetAccountTxsResponse422,
+  GetAccountTxsResponse500,
+  GetBlockDetailMetadataParam,
+  GetBlockDetailResponse200,
+  GetBlockDetailResponse400,
+  GetBlockDetailResponse401,
+  GetBlockDetailResponse403,
+  GetBlockDetailResponse404,
+  GetBlockDetailResponse422,
+  GetBlockDetailResponse500,
+  GetBlockNumberLatestMetadataParam,
+  GetBlockNumberLatestResponse200,
+  GetBlockNumberLatestResponse400,
+  GetBlockNumberLatestResponse401,
+  GetBlockNumberLatestResponse403,
+  GetBlockNumberLatestResponse404,
+  GetBlockNumberLatestResponse422,
+  GetBlockNumberLatestResponse500,
+  GetContractEventsMetadataParam,
+  GetContractEventsResponse200,
+  GetContractEventsResponse400,
+  GetContractEventsResponse401,
+  GetContractEventsResponse403,
+  GetContractEventsResponse404,
+  GetContractEventsResponse422,
+  GetContractEventsResponse500,
+  GetTxDetailMetadataParam,
+  GetTxDetailResponse200,
+  GetTxDetailResponse400,
+  GetTxDetailResponse401,
+  GetTxDetailResponse403,
+  GetTxDetailResponse404,
+  GetTxDetailResponse422,
+  GetTxDetailResponse500,
+} from "./types";
