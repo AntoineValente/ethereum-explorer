@@ -57,11 +57,13 @@ CHAINBASE_API_URL=
 
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+## Improvements
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [ ] Add tests (mostly around the filtering logic)
+- [ ] Refactor the `TransactionsPagination` component
+- [ ] Better edge cases handling
+- [ ] NFT/ERC21 holding details & transactions
+  - [ ] Fetch & display NFT holdings metadata (picture, name, id)
+  - [ ] Fetch & display ERC21 tokens
+- [ ] Block/transactions details page
+- [ ] Display FIAT value
