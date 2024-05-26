@@ -55,16 +55,16 @@ CHAINBASE_API_URL=
 
 > NOTE: Go to https://console.chainbase.com/ to create an account and get the keys
 
-3. Run the project:
+2. Run the project:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Improvements
+## Todo
 
 - [ ] Add tests (mostly around the filtering logic)
 - [ ] Refactor the `TransactionsPagination` component
