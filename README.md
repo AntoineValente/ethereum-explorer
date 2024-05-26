@@ -40,6 +40,13 @@ The main motivation behind choosing this tech stack was to experiment with the a
 
 2. Install dependencies:
 ```bash
+npm i
+# or
+yarn
+```
+
+3. Run the project:
+```bash
 npm run dev
 # or
 yarn dev
