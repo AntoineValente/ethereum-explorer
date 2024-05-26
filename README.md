@@ -45,13 +45,6 @@ npm i
 yarn
 ```
 
-3. Run the project:
-```bash
-npm run dev
-# or
-yarn dev
-```
-
 ## Usage
 
 1. In order to use the Chainbase API, create the file `.env.local` at the root of the project and add these environment variables:
@@ -61,6 +54,13 @@ CHAINBASE_API_URL=
 ```
 
 > NOTE: Go to https://console.chainbase.com/ to create an account and get the keys
+
+3. Run the project:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
